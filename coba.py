@@ -12,11 +12,19 @@ with open('json/pengunjung.json', 'r', encoding='utf-8') as file:
 with open('json/staff.json', 'r', encoding='utf-8') as file:
     staff = json.load(file)
 
+with open('json/peminjaman.json', 'r', encoding='utf-8') as file:
+    peminjaman = json.load(file)
+
+with open('json/reservasi.json', 'r', encoding='utf-8') as file:
+    reservasi = json.load(file)
+
 database = {
     "anggota": anggota,
     "buku": buku,
     "pengunjung": pengunjung,
-    "staff": staff
+    "staff": staff,
+    "peminjaman": peminjaman,
+    "reservasi": reservasi
 }
 
 def homepage():
@@ -109,6 +117,10 @@ def page_anggota ():
     print ("4. Reservasi Buku")
     print ("5. Perpanjang keanggotaan")
     print ("0. Kembali")
+    pilihan = int(input("Pilihan Anda (0-5): "))
+
+    if (pilihan == 3):
+        perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
 
 def menu_tamu():
     print("=== MENU TAMU ===")
@@ -239,6 +251,62 @@ def edit_buku(data_buku):
         print("Pilihan tidak valid.")
         edit_buku(database["buku"])
     homepage()
+
+def tambah_tanggal(hari, bulan, tahun, durasi):
+    total_hari = tahun * 365 + bulan * 30 + hari + durasi
+    tahun_baru = total_hari // 365
+    sisa_hari = total_hari % 365
+    bulan_baru = sisa_hari // 30
+    hari_baru = sisa_hari % 30
+    if hari_baru == 0:
+        hari_baru = 1
+    return hari_baru, bulan_baru, tahun_baru
+
+def tampilkan_tanggal(tgl):
+    return f"{tgl[0]:02d}-{tgl[1]:02d}-{tgl[2]}"
+
+def cari_peminjaman(peminjaman, id_buku, id_anggota):
+    for i in range(len(peminjaman)):
+        if peminjaman[i] is not None:
+            if peminjaman[i]["id_buku"] == id_buku and peminjaman[i]["id_anggota"] == id_anggota:
+                return i
+    return -1
+
+def ada_reservasi_lain(reservasi, id_buku, id_anggota):
+    for r in reservasi:
+        if r["id_buku"] == id_buku and r["id_anggota"] != id_anggota:
+            return True
+    return False
+
+def perpanjang_peminjaman(peminjaman, reservasi):
+    print("")
+    print("=== PERPANJANGAN PEMINJAMAN ===")
+    id_buku = input("ID Buku yang dipinjam  : ")
+    id_anggota = input("ID Anggota peminjam    : ")
+
+    i = cari_peminjaman(peminjaman, id_buku, id_anggota)
+    if i == -1:
+        print("Data peminjaman tidak ditemukan.")
+    else:
+        if peminjaman[i]["sudah_perpanjang"]:
+            print("Peminjaman ini sudah pernah diperpanjang.")
+        elif ada_reservasi_lain(reservasi, id_buku, id_anggota):
+            print("Tidak bisa diperpanjang: buku sudah direservasi anggota lain.")
+        else:
+            print("Tanggal kembali sebelumnya :", tampilkan_tanggal(peminjaman[i]["tanggal_kembali"]))
+            durasi = int(input("Durasi perpanjangan (maks 7): "))
+            if (durasi > 7):
+                print("Durasi melebihi 7 hari! Diset ke 7.")
+                durasi = 7
+            h, b, t = peminjaman[i]["tanggal_kembali"]
+            hk, bk, tk = tambah_tanggal(h, b, t, durasi)
+            peminjaman[i]["tanggal_kembali"] = (hk, bk, tk)
+            peminjaman[i]["sudah_perpanjang"] = True
+            print("Perpanjangan berhasil.")
+            print("Tanggal kembali baru       :", tampilkan_tanggal(peminjaman[i]["tanggal_kembali"]))
+            with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
+                json.dump(peminjaman, file, indent=4)
+
 
 def main():
     homepage()

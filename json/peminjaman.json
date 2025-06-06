@@ -1,0 +1,18 @@
+[
+    {
+        "id_buku": "B001",
+        "id_anggota": "AG001",
+        "tanggal_pinjam": [1, 6, 2025],
+        "tanggal_kembali": [8, 6, 2025],
+        "durasi": 7,
+        "sudah_perpanjang": false
+    },
+    {
+        "id_buku": "B002",
+        "id_anggota": "AG005",
+        "tanggal_pinjam": [2, 6, 2025],
+        "tanggal_kembali": [9, 6, 2025],
+        "durasi": 7,
+        "sudah_perpanjang": true
+    }
+]
