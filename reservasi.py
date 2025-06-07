@@ -1,3 +1,21 @@
+import json
+
+def cek_anggota(id_anggota):
+    with open("json/Anggota.json") as file:
+        data = json.load(file)
+        for anggota in data:
+            if anggota["id"] == id_anggota:
+                return True
+    return False
+
+def cek_buku(id_buku):
+    with open("json/buku.json") as file:
+        data = json.load(file)
+        for buku in data:
+            if buku["id"] == id_buku:
+                return True
+    return False
+
 def data ():
     global Buku, Peminjam, ID_Anggota
     i = 0
@@ -16,8 +34,6 @@ def data ():
             i = i + 1
         else:
             print("Daftar sebagai anggota untuk reservasi !")
-        
-        id_buku = int(input("Masukkan ID buku : "))
     return i 
 
 def reservasi (N):

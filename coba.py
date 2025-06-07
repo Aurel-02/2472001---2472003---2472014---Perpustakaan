@@ -128,7 +128,8 @@ def page_anggota ():
         perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
     elif (pilihan == 4):
         reservasi_buku(database["buku"], database["reservasi"])
-
+    elif (pilihan == 5):
+        perpanjang_anggota()
 
 def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
     print("=== PINJAM BUKU ===")
@@ -483,6 +484,22 @@ def perpanjang_peminjaman(peminjaman, reservasi):
             with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
                 json.dump(peminjaman, file, indent=4)
 
+def perpanjang_anggota():
+    print("\n=== PERPANJANGAN KEANGGOTAAN ===")
+    id_anggota = input("Masukkan ID Anggota: ")
+    nama = input("Masukkan Nama Anggota: ")
+    durasi = input("Durasi perpanjangan (contoh: 12 bulan): ")
+
+    anggota_ditemukan = False
+
+    for anggota in database["anggota"]:
+        if anggota["id_anggota"] == id_anggota and anggota["nama_anggota"].lower() == nama.lower():
+            anggota_ditemukan = True
+
+    if anggota_ditemukan:
+        print("Perpanjangan berhasil selama ", durasi)
+    else:
+        print("ID tidak terdaftar.")
 
 def main():
     homepage()
