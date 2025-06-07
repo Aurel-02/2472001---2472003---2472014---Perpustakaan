@@ -30,5 +30,37 @@
         ],
         "durasi": 5,
         "sudah_perpanjang": false
+    },
+    {
+        "id_buku": "J002",
+        "id_anggota": "AG005",
+        "tanggal_pinjam": [
+            6,
+            7,
+            2025
+        ],
+        "tanggal_kembali": [
+            13,
+            7,
+            2025
+        ],
+        "durasi": 7,
+        "sudah_perpanjang": false
+    },
+    {
+        "id_buku": "P010",
+        "id_anggota": "AG003",
+        "tanggal_pinjam": [
+            26,
+            7,
+            2025
+        ],
+        "tanggal_kembali": [
+            29,
+            7,
+            2025
+        ],
+        "durasi": 3,
+        "sudah_perpanjang": false
     }
 ]
