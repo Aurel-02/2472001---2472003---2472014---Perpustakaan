@@ -316,7 +316,7 @@ def perpanjang_peminjaman(peminjaman, reservasi):
     id_anggota = input("ID Anggota peminjam    : ")
 
     i = cari_peminjaman(peminjaman, id_buku, id_anggota)
-    if i == -1:
+    if (i == -1):
         print("Data peminjaman tidak ditemukan.")
     else:
         if peminjaman[i]["sudah_perpanjang"]:
