@@ -120,15 +120,14 @@ def page_anggota ():
     print ("0. Kembali")
     pilihan = int(input("Pilihan Anda (0-5): "))
 
-    if (pilihan == 1):
-        pinjam_buku(database["buku"], database["peminjaman"])
-    elif (pilihan == 2):
+    if pilihan == 1:
+        pinjam_buku(database["buku"], database["peminjaman"], database["reservasi"])
+    elif pilihan == 2:
         pengembalian_buku(database["buku"], database["peminjaman"])
-    elif (pilihan == 3):
+    elif pilihan == 3:
         perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
-    elif (pilihan == 4):
+    elif pilihan == 4:
         reservasi_buku(database["buku"], database["reservasi"])
-
 
 def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
     print("=== PINJAM BUKU ===")
