@@ -74,28 +74,18 @@ def login_staff():
         homepage()
 
 def login_pengunjung():
-    print ("")
-    print ("=== PENGUNJUNG ===")
-    print ("Apakah Anda mahasiswa?")
-    print ("1. Ya, saya mahasiswa")
-    print ("2. Bukan, saya tamu")
-    print ("0. Kembali")
+    print("=== PENGUNJUNG ===")
+    print("Apakah Anda mahasiswa?")
+    print("1. Ya, saya mahasiswa")
+    print("2. Bukan, saya tamu")
+    print("0. Kembali")
     
-<<<<<<< HEAD
     pilihan = input("Pilihan Anda (0-2): ")
     if (pilihan == "1"):
         login_mahasiswa()
     elif (pilihan == "2"):
         menu_tamu()
     elif (pilihan == "0"):
-=======
-    pilihan = int(input("Pilihan Anda (0-2): "))
-    if (pilihan == 1):
-        login_mahasiswa()
-    elif (pilihan == 2):
-        page_tamu()
-    elif (pilihan == 0):
->>>>>>> f21c240323d1f8d4f147f8b9883bd24c39706d37
         homepage()
     else:
         print("Maaf, pilihan tidak tersedia.")
@@ -130,7 +120,6 @@ def page_anggota ():
     print ("0. Kembali")
     pilihan = int(input("Pilihan Anda (0-5): "))
 
-<<<<<<< HEAD
     if (pilihan == 1):
         pinjam_buku(database["buku"], database["peminjaman"])
     elif (pilihan == 2):
@@ -308,44 +297,12 @@ def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
     if (not buku_ditemukan):
         print("ID Buku tidak ditemukan.")
 
-=======
-    if (pilihan==1):
-        pinjam_buku()
-    elif (pilihan==2):
-        pengembalian_buku()
-    elif (pilihan == 3):
-        perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
-    elif (pilihan == 4):
-        reservasi_buku ()
-    elif (pilihan == 5):
-        perpanjang_keanggotaan()
-    elif (pilihan == 0):
-        print("Terima kasih, sampai jumpa kembali!")
-        homepage()
-    else:
-        print("Maaf, pilihan tidak tersedia")
-        page_anggota()
->>>>>>> f21c240323d1f8d4f147f8b9883bd24c39706d37
 
-    homepage()
-
-def page_tamu():
-    print ("")
-    print ("=== Selamat datang di perpustakaan Maranatha! ===")
-    print ("Silakan pilih kegiatan yang akan Anda lakukan!")
-    print ("1. Lihat Koleksi Buku")
-    print ("0. Kembali")
-    pilihan = int (input("Pilihan Anda (0-1): "))
-
-    if (pilihan == 1):
-        lihat_daftar_buku()
-    elif (pilihan == 0):
-        print ("Terima kasih, sampai jumpa kembali!")
-        homepage()
-    else:
-        print ("Maaf, pilihan tidak tersedia.")
-        page_tamu
-    
+def menu_tamu():
+    print("=== MENU TAMU ===")
+    print("1. Lihat Koleksi Buku")
+    print("2. Daftar Akun Pengunjung")
+    print("0. Kembali")
     homepage()
 
 def page_staff():
@@ -376,17 +333,15 @@ def page_staff():
 def lihat_daftar_buku():
     print("")
     print("Daftar Buku di Perpustakaan:")
-    for i in range (len(database["buku"])):
-        buku = database["buku"][i]
-        print (f"{i+1}. {buku['id_buku']} - {buku["judul_buku"]} - {buku["kategori_buku"]} ({buku['stok']})({buku['status']})")
+    for buku in database["buku"]:
+        print(f"{buku['id_buku']} - {buku['judul_buku']} ({buku['stok']})({buku['status']})")
     homepage()
 
 def cek_jumlah_stok():
-    print ("")
-    print("Daftar Jumlah Stok Buku di Perpustakaan:")
-    for i in range(len(database["buku"])):
-        buku = database["buku"][i]
-        print(f"{i + 1}. {buku['judul_buku']} — {buku['stok']} buah")
+    print("")
+    print("Jumlah stok buku:")
+    for buku in database["buku"]:
+        print(f"{buku['judul_buku']}: {buku['stok']} buah")
     homepage()
 
 def edit_kondisi_buku():
@@ -527,57 +482,6 @@ def perpanjang_peminjaman(peminjaman, reservasi):
             print("Tanggal kembali baru       :", tampilkan_tanggal(peminjaman[i]["tanggal_kembali"]))
             with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
                 json.dump(peminjaman, file, indent=4)
-
-def total_hari(hari, bulan, tahun):
-    return tahun * 365 + bulan * 30 + hari
-
-def pengembalian_buku():
-    print ("")
-    print ("=== PENGEMBALIAN BUKU ===")
-    id_buku = str(input("ID Buku yang dikembalikan: "))
-    id_anggota = str(input("ID Anggota peminjam       : "))
-
-    i = cari_peminjaman(database["peminjaman"], id_buku, id_anggota)
-    if (i == -1):
-        print("Data peminjaman tidak ditemukan.")
-        return
-
-    peminjaman_data = database["peminjaman"][i]
-    tgl_kembali = peminjaman_data["tanggal_kembali"]
-    print(f"Tanggal kembali seharusnya: {tampilkan_tanggal(tgl_kembali)}")
-
-    print("Masukkan tanggal pengembalian aktual:")
-    hari = int(input("Hari   : "))
-    bulan = int(input("Bulan  : "))
-    tahun = int(input("Tahun  : "))
-    tgl_aktual = (hari, bulan, tahun)
-
-    hari_kembali = total_hari(*tgl_kembali)
-    hari_aktual = total_hari(*tgl_aktual)
-
-    selisih = hari_aktual - hari_kembali
-
-    if (selisih > 0):
-        denda = selisih * 5000
-        print(f"Terlambat {selisih} hari. Denda: Rp {denda:,}")
-    else:
-        print("Pengembalian tepat waktu. Tidak ada denda.")
-
-    for buku in database["buku"]:
-        if (id_buku == buku["id_buku"]):
-            buku["stok"] = buku ["stok"] + 1
-            break
-
-    del database["peminjaman"][i]
-
-    with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
-        json.dump(database["peminjaman"], file, indent=4, ensure_ascii=False)
-
-    with open('json/buku.json', 'w', encoding='utf-8') as file:
-        json.dump(database["buku"], file, indent=4, ensure_ascii=False)
-
-    print("Pengembalian berhasil dicatat.")
-    homepage()
 
 
 def main():
