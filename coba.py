@@ -130,6 +130,7 @@ def page_anggota ():
         reservasi_buku(database["buku"], database["reservasi"])
 
 def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
+    print("")
     print("=== PINJAM BUKU ===")
     id_anggota = input("Masukkan ID Anggota: ")
 
@@ -142,7 +143,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
     if (sudah_pinjam):
         print("Anda masih memiliki buku yang sedang dipinjam.")
         pilihan = input("Apakah Anda ingin mengembalikan buku terlebih dahulu? (Ya/Tidak): ")
-        if pilihan.lower() == "ya":
+        if (pilihan.lower() == "ya"):
             pengembalian_buku(data_buku, data_peminjaman)
         else:
             print("Silakan kembalikan buku terlebih dahulu sebelum meminjam yang baru.")
@@ -153,7 +154,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
         buku_ditemukan = False
 
         for buku in data_buku:
-            if (buku["id_buku"] == id_buku):
+            if (id_buku == buku["id_buku"]):
                 buku_ditemukan = True
                 if (buku["status"] == "Tersedia"):
                     durasi = int(input("Masukkan lama peminjaman (maksimal 14 hari): "))
@@ -196,7 +197,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
                     print("1. Reservasi buku")
                     print("2. Memilih buku lain")
                     print("3. Tidak jadi pinjam")
-                    opsi = input("Pilihan Anda (1/2/3): ")
+                    opsi = int(input("Pilihan Anda (1/2/3): "))
 
                     if (opsi == "1"):
                         reservasi_buku(data_buku, data_reservasi, id_anggota, id_buku)
@@ -209,12 +210,14 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
                     
         if (not buku_ditemukan):
             print("ID Buku tidak ditemukan.")
+            homepage()
 
 
 def pengembalian_buku(data_buku, data_peminjaman):
+    print("")
     print("=== PENGEMBALIAN BUKU ===")
-    id_buku = input("Masukkan ID Buku yang ingin dikembalikan: ")
-    id_anggota = input("Masukkan ID Anggota: ")
+    id_buku = str(input("Masukkan ID Buku yang ingin dikembalikan: "))
+    id_anggota = str(input("Masukkan ID Anggota: "))
 
     index_peminjaman = -1
 
