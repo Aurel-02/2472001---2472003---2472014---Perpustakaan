@@ -317,6 +317,54 @@ def perpanjang_peminjaman(peminjaman, reservasi):
             with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
                 json.dump(peminjaman, file, indent=4)
 
+from datetime import date
+
+def pengembalian_buku():
+    print("=== PENGEMBALIAN BUKU ===")
+    id_buku = input("ID Buku yang dikembalikan: ")
+    id_anggota = input("ID Anggota peminjam       : ")
+
+    i = cari_peminjaman(database["peminjaman"], id_buku, id_anggota)
+    if i == -1:
+        print("Data peminjaman tidak ditemukan.")
+        return
+
+    peminjaman_data = database["peminjaman"][i]
+    tgl_kembali_seharusnya = peminjaman_data["tanggal_kembali"]
+    tanggal_kembali_obj = date(tgl_kembali_seharusnya[2], tgl_kembali_seharusnya[1], tgl_kembali_seharusnya[0])
+
+    print(f"Tanggal kembali seharusnya: {tampilkan_tanggal(tgl_kembali_seharusnya)}")
+    print("Masukkan tanggal pengembalian aktual:")
+    hari = int(input("Hari   : "))
+    bulan = int(input("Bulan  : "))
+    tahun = int(input("Tahun  : "))
+    tanggal_aktual_obj = date(tahun, bulan, hari)
+
+    # Hitung selisih hari
+    selisih = (tanggal_aktual_obj - tanggal_kembali_obj).days
+
+    if selisih > 0:
+        denda = selisih * 5000
+        print(f"Terlambat {selisih} hari. Denda: Rp {denda:,}")
+    else:
+        print("Pengembalian tepat waktu. Tidak ada denda.")
+
+    # Update stok dan hapus data peminjaman
+    for buku in database["buku"]:
+        if buku["id_buku"] == id_buku:
+            buku["stok"] += 1
+            break
+
+    del database["peminjaman"][i]
+    
+    with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
+        json.dump(database["peminjaman"], file, indent=4, ensure_ascii=False)
+
+    with open('json/buku.json', 'w', encoding='utf-8') as file:
+        json.dump(database["buku"], file, indent=4, ensure_ascii=False)
+
+    print("Pengembalian berhasil dicatat.")
+
 
 def main():
     homepage()
