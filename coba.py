@@ -522,9 +522,9 @@ def perpanjang_anggota():
             anggota_ditemukan = True
 
     if anggota_ditemukan:
-        print(f"Perpanjangan berhasil selama {durasi}.")
+        print("Perpanjangan berhasil selama ",durasi)
     else:
-        print("ID tidak terdaftar.")
+        print("ID tidak terdaftar!")
 
 def main():
     homepage()
