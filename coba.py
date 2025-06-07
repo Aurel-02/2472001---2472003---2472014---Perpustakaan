@@ -120,9 +120,17 @@ def page_anggota ():
     pilihan = int(input("Pilihan Anda (0-5): "))
 
     if (pilihan==1):
-        
-    if (pilihan == 3):
+        pinjam buku()
+    elif (pilihan==2):
+        pengembalian_buku()
+    elif (pilihan == 3):
         perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
+    elif (pilihan == 4):
+        reservasi_buku ()
+    elif (pilihan == 5):
+        perpanjang_keanggotaan()
+    elif (pilihan == 0):
+        homepage()
 
 def menu_tamu():
     print("=== MENU TAMU ===")
