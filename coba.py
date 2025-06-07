@@ -120,9 +120,17 @@ def page_anggota ():
     pilihan = int(input("Pilihan Anda (0-5): "))
 
     if (pilihan==1):
-        
-    if (pilihan == 3):
+        pinjam_buku()
+    elif (pilihan==2):
+        pengembalian_buku()
+    elif (pilihan == 3):
         perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
+    elif (pilihan == 4):
+        reservasi_buku ()
+    elif (pilihan == 5):
+        perpanjang_keanggotaan()
+    elif (pilihan == 0):
+        homepage()
 
 def menu_tamu():
     print("=== MENU TAMU ===")
@@ -308,6 +316,57 @@ def perpanjang_peminjaman(peminjaman, reservasi):
             print("Tanggal kembali baru       :", tampilkan_tanggal(peminjaman[i]["tanggal_kembali"]))
             with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
                 json.dump(peminjaman, file, indent=4)
+
+def total_hari(hari, bulan, tahun):
+    return tahun * 365 + bulan * 30 + hari
+
+def pengembalian_buku():
+    print ("")
+    print ("=== PENGEMBALIAN BUKU ===")
+    id_buku = str(input("ID Buku yang dikembalikan: "))
+    id_anggota = str(input("ID Anggota peminjam       : "))
+
+    i = cari_peminjaman(database["peminjaman"], id_buku, id_anggota)
+    if (i == -1):
+        print("Data peminjaman tidak ditemukan.")
+        return
+
+    peminjaman_data = database["peminjaman"][i]
+    tgl_kembali = peminjaman_data["tanggal_kembali"]
+    print(f"Tanggal kembali seharusnya: {tampilkan_tanggal(tgl_kembali)}")
+
+    print("Masukkan tanggal pengembalian aktual:")
+    hari = int(input("Hari   : "))
+    bulan = int(input("Bulan  : "))
+    tahun = int(input("Tahun  : "))
+    tgl_aktual = (hari, bulan, tahun)
+
+    hari_kembali = total_hari(*tgl_kembali)
+    hari_aktual = total_hari(*tgl_aktual)
+
+    selisih = hari_aktual - hari_kembali
+
+    if (selisih > 0):
+        denda = selisih * 5000
+        print(f"Terlambat {selisih} hari. Denda: Rp {denda:,}")
+    else:
+        print("Pengembalian tepat waktu. Tidak ada denda.")
+
+    for buku in database["buku"]:
+        if (id_buku == buku["id_buku"]):
+            buku["stok"] = buku ["stok"] + 1
+            break
+
+    del database["peminjaman"][i]
+
+    with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
+        json.dump(database["peminjaman"], file, indent=4, ensure_ascii=False)
+
+    with open('json/buku.json', 'w', encoding='utf-8') as file:
+        json.dump(database["buku"], file, indent=4, ensure_ascii=False)
+
+    print("Pengembalian berhasil dicatat.")
+    homepage()
 
 
 def main():
