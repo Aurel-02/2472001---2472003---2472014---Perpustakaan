@@ -119,6 +119,8 @@ def page_anggota ():
     print ("0. Kembali")
     pilihan = int(input("Pilihan Anda (0-5): "))
 
+    if (pilihan==1):
+        
     if (pilihan == 3):
         perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
 
