@@ -73,18 +73,19 @@ def login_staff():
         homepage()
 
 def login_pengunjung():
-    print("=== PENGUNJUNG ===")
-    print("Apakah Anda mahasiswa?")
-    print("1. Ya, saya mahasiswa")
-    print("2. Bukan, saya tamu")
-    print("0. Kembali")
+    print ("")
+    print ("=== PENGUNJUNG ===")
+    print ("Apakah Anda mahasiswa?")
+    print ("1. Ya, saya mahasiswa")
+    print ("2. Bukan, saya tamu")
+    print ("0. Kembali")
     
-    pilihan = input("Pilihan Anda (0-2): ")
-    if pilihan == "1":
+    pilihan = int(input("Pilihan Anda (0-2): "))
+    if (pilihan == 1):
         login_mahasiswa()
-    elif pilihan == "2":
-        menu_tamu()
-    elif pilihan == "0":
+    elif (pilihan == 2):
+        page_tamu()
+    elif (pilihan == 0):
         homepage()
     else:
         print("Maaf, pilihan tidak tersedia.")
@@ -130,13 +131,31 @@ def page_anggota ():
     elif (pilihan == 5):
         perpanjang_keanggotaan()
     elif (pilihan == 0):
+        print("Terima kasih, sampai jumpa kembali!")
         homepage()
+    else:
+        print("Maaf, pilihan tidak tersedia")
+        page_anggota()
 
-def menu_tamu():
-    print("=== MENU TAMU ===")
-    print("1. Lihat Koleksi Buku")
-    print("2. Daftar Akun Pengunjung")
-    print("0. Kembali")
+    homepage()
+
+def page_tamu():
+    print ("")
+    print ("=== Selamat datang di perpustakaan Maranatha! ===")
+    print ("Silakan pilih kegiatan yang akan Anda lakukan!")
+    print ("1. Lihat Koleksi Buku")
+    print ("0. Kembali")
+    pilihan = int (input("Pilihan Anda (0-1): "))
+
+    if (pilihan == 1):
+        lihat_daftar_buku()
+    elif (pilihan == 0):
+        print ("Terima kasih, sampai jumpa kembali!")
+        homepage()
+    else:
+        print ("Maaf, pilihan tidak tersedia.")
+        page_tamu
+    
     homepage()
 
 def page_staff():
@@ -167,15 +186,17 @@ def page_staff():
 def lihat_daftar_buku():
     print("")
     print("Daftar Buku di Perpustakaan:")
-    for buku in database["buku"]:
-        print(f"{buku['id_buku']} - {buku['judul_buku']} ({buku['stok']})({buku['status']})")
+    for i in range (len(database["buku"])):
+        buku = database["buku"][i]
+        print (f"{i+1}. {buku['id_buku']} - {buku["judul_buku"]} - {buku["kategori_buku"]} ({buku['stok']})({buku['status']})")
     homepage()
 
 def cek_jumlah_stok():
-    print("")
-    print("Jumlah stok buku:")
-    for buku in database["buku"]:
-        print(f"{buku['judul_buku']}: {buku['stok']} buah")
+    print ("")
+    print("Daftar Jumlah Stok Buku di Perpustakaan:")
+    for i in range(len(database["buku"])):
+        buku = database["buku"][i]
+        print(f"{i + 1}. {buku['judul_buku']} — {buku['stok']} buah")
     homepage()
 
 def edit_kondisi_buku():
