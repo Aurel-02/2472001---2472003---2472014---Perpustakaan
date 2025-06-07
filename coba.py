@@ -518,11 +518,11 @@ def perpanjang_anggota():
     anggota_ditemukan = False
 
     for anggota in database["anggota"]:
-        if anggota["id_anggota"] == id_anggota and anggota["nama_anggota"].lower() == nama.lower():
+        if anggota["id_anggota"] == id_anggota and anggota["nama_anggota"] == nama:
             anggota_ditemukan = True
 
     if anggota_ditemukan:
-        print("Perpanjangan berhasil selama ", durasi)
+        print(f"Perpanjangan berhasil selama {durasi}.")
     else:
         print("ID tidak terdaftar.")
 
