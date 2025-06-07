@@ -1,42 +1,32 @@
 [
-  {
-    "id_staff": "STF001",
-    "nama": "Aulia Rahma"
-  },
-  {
-    "id_staff": "STF002",
-    "nama": "Budi Santoso"
-  },
-  {
-    "id_staff": "STF003",
-    "nama": "Citra Lestari"
-  },
-  {
-    "id_staff": "STF004",
-    "nama": "Dewi Anjani"
-  },
-  {
-    "id_staff": "STF005",
-    "nama": "Eka Putra"
-  },
-  {
-    "id_staff": "STF006",
-    "nama": "Fajar Nugroho"
-  },
-  {
-    "id_staff": "STF007",
-    "nama": "Gita Sari"
-  },
-  {
-    "id_staff": "STF008",
-    "nama": "Hadi Prasetyo"
-  },
-  {
-    "id_staff": "STF009",
-    "nama": "Intan Permata"
-  },
-  {
-    "id_staff": "STF010",
-    "nama": "Joko Widodo"
-  }
+  {"id_staff": "STF001","nama_staff": "Aulia Rahma"},
+  {"id_staff": "STF002","nama_staff": "Budi Santoso"},
+  {"id_staff": "STF003","nama_staff": "Citra Lestari"},
+  {"id_staff": "STF004","nama_staff": "Dewi Anjani"},
+  {"id_staff": "STF005","nama_staff": "Eka Putra"},
+  {"id_staff": "STF006","nama_staff": "Fajar Nugroho"},
+  {"id_staff": "STF007","nama_staff": "Gita Sari"},
+  {"id_staff": "STF008","nama_staff": "Hadi Prasetyo"},
+  {"id_staff": "STF009","nama_staff": "Intan Permata"},
+  {"id_staff": "STF010", "nama_staff": "Joko Santoso"},
+  {"id_staff": "STF011", "nama_staff": "Kiki Amelia"},
+  {"id_staff": "STF012", "nama_staff": "Lukman Hakim"},
+  {"id_staff": "STF013", "nama_staff": "Melati Ayu"},
+  {"id_staff": "STF014", "nama_staff": "Nina Agustina"},
+  {"id_staff": "STF015", "nama_staff": "Oka Yuliana"},
+  {"id_staff": "STF016", "nama_staff": "Putra Mahesa"},
+  {"id_staff": "STF017", "nama_staff": "Qori Fadila"},
+  {"id_staff": "STF018", "nama_staff": "Riko Febrian"},
+  {"id_staff": "STF019", "nama_staff": "Sinta Dewi"},
+  {"id_staff": "STF020", "nama_staff": "Teguh Wibowo"},
+  {"id_staff": "STF021", "nama_staff": "Utami Sari"},
+  {"id_staff": "STF022", "nama_staff": "Veronika Tania"},
+  {"id_staff": "STF023", "nama_staff": "Wahyu Hidayat"},
+  {"id_staff": "STF024", "nama_staff": "Xena Damara"},
+  {"id_staff": "STF025", "nama_staff": "Yani Marlina"},
+  {"id_staff": "STF026", "nama_staff": "Zaki Ramadhan"},
+  {"id_staff": "STF027", "nama_staff": "Andri Kurniawan"},
+  {"id_staff": "STF028", "nama_staff": "Bella Safitri"},
+  {"id_staff": "STF029", "nama_staff": "Cahya Pramudita"},
+  {"id_staff": "STF030", "nama_staff": "Dian Wahyuni"}
 ]
