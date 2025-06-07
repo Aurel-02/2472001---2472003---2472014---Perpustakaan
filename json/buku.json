@@ -1,302 +1,302 @@
 [
-  {
-    "id_buku": "P001",
-    "judul_buku": "Belajar Python untuk Pemula",
-    "tipe": "Buku",
-    "stok": 1,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Andi Saputra"
-  },
-  {
-    "id_buku": "P002",
-    "judul_buku": "Sejarah Pergerakan Mahasiswa",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Dewi Kartika"
-  },
-  {
-    "id_buku": "S001",
-    "judul_buku": "Skripsi - Analisis Sistem Informasi Akademik",
-    "tipe": "Skripsi",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Rizky Maulana"
-  },
-  {
-    "id_buku": "J001",
-    "judul_buku": "Jurnal Teknologi Informasi Vol.5 No.2",
-    "tipe": "Jurnal",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Linda Wulandari"
-  },
-  {
-    "id_buku": "P003",
-    "judul_buku": "Panduan Praktikum Kimia Dasar",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Bambang Haryanto"
-  },
-  {
-    "id_buku": "P004",
-    "judul_buku": "Desain UI/UX Aplikasi Mobile",
-    "tipe": "Buku",
-    "stok": 3,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Sari Nuraini"
-  },
-  {
-    "id_buku": "J002",
-    "judul_buku": "Jurnal Psikologi Remaja Vol.3 No.1",
-    "tipe": "Jurnal",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Yusuf Ramadhan"
-  },
-  {
-    "id_buku": "S008",
-    "judul_buku": "Skripsi - Studi Penerapan Big Data",
-    "tipe": "Skripsi",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Nina Lestari"
-  },
-  {
-    "id_buku": "P005",
-    "judul_buku": "Pengantar Statistik untuk Penelitian",
-    "tipe": "Buku",
-    "stok": 3,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Hendra Gunawan"
-  },
-  {
-    "id_buku": "P006",
-    "judul_buku": "E-book Manajemen Proyek IT",
-    "tipe": "Buku Digital",
-    "stok": 1,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Wulan Maharani"
-  },
-  {
-    "id_buku": "K001",
-    "judul_buku": "Komik Petualangan Si Kancil",
-    "tipe": "Buku",
-    "stok": 4,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Komik",
-    "status": "Dipinjam",
-    "pengarang": "Eko Prasetyo"
-  },
-  {
-    "id_buku": "M001",
-    "judul_buku": "Majalah Teknologi Edisi Juli",
-    "tipe": "Buku",
-    "stok": 1,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Majalah",
-    "status": "Tersedia",
-    "pengarang": "Melati Rahayu"
-  },
-  {
-    "id_buku": "N001",
-    "judul_buku": "Novel - Cinta di Ujung Senja",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Novel",
-    "status": "Dipinjam",
-    "pengarang": "Tegar Alamsyah"
-  },
-  {
-    "id_buku": "K002",
-    "judul_buku": "Komik Robot Masa Depan",
-    "tipe": "Buku",
-    "stok": 3,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Komik",
-    "status": "Tersedia",
-    "pengarang": "Sinta Dewi"
-  },
-  {
-    "id_buku": "M002",
-    "judul_buku": "Majalah Sains Populer Edisi Maret",
-    "tipe": "Buku",
-    "stok": 4,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Majalah",
-    "status": "Dipinjam",
-    "pengarang": "Arif Nugroho"
-  },
-  {
-    "id_buku": "P007",
-    "judul_buku": "Pemrograman Java Lanjutan",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Galih Pratama"
-  },
-  {
-    "id_buku": "P008",
-    "judul_buku": "Matematika Diskrit",
-    "tipe": "Buku",
-    "stok": 1,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Intan Maharani"
-  },
-  {
-    "id_buku": "S002",
-    "judul_buku": "Skripsi - Pengaruh E-learning terhadap Hasil Belajar",
-    "tipe": "Skripsi",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Riko Ardiansyah"
-  },
-  {
-    "id_buku": "J003",
-    "judul_buku": "Jurnal Ekonomi dan Bisnis Vol.2 No.1",
-    "tipe": "Jurnal",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Monica Astari"
-  },
-  {
-    "id_buku": "P009",
-    "judul_buku": "Dasar-dasar Akuntansi",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Budi Hartono"
-  },
-  {
-    "id_buku": "N002",
-    "judul_buku": "Novel - Langit Merah di Atas Kyoto",
-    "tipe": "Buku",
-    "stok": 1,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Novel",
-    "status": "Tersedia",
-    "pengarang": "Citra Wulandari"
-  },
-  {
-    "id_buku": "K003",
-    "judul_buku": "Komik Ninja Legendaris",
-    "tipe": "Buku",
-    "stok": 3,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Komik",
-    "status": "Dipinjam",
-    "pengarang": "Fahmi Ardi"
-  },
-  {
-    "id_buku": "M003",
-    "judul_buku": "Majalah Ekowisata Edisi April",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Majalah",
-    "status": "Tersedia",
-    "pengarang": "Ratna Damayanti"
-  },
-  {
-    "id_buku": "P010",
-    "judul_buku": "Logika Matematika",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Donny Aditya"
-  },
-  {
-    "id_buku": "S003",
-    "judul_buku": "Skripsi - Strategi Pemasaran UMKM",
-    "tipe": "Skripsi",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Selvi Oktaviani"
-  },
-  {
-    "id_buku": "J004",
-    "judul_buku": "Jurnal Kesehatan Masyarakat Vol.1 No.3",
-    "tipe": "Jurnal",
-    "stok": 1,
-    "kondisi_buku": "Digital",
-    "kategori_buku": "Pendidikan",
-    "status": "Tersedia",
-    "pengarang": "Agus Mulyadi"
-  },
-  {
-    "id_buku": "K004",
-    "judul_buku": "Komik Legenda Garuda",
-    "tipe": "Buku",
-    "stok": 2,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Komik",
-    "status": "Tersedia",
-    "pengarang": "Indah Permata"
-  },
-  {
-    "id_buku": "M004",
-    "judul_buku": "Majalah Kuliner Nusantara Edisi Mei",
-    "tipe": "Buku",
-    "stok": 1,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Majalah",
-    "status": "Dipinjam",
-    "pengarang": "Dedi Hidayat"
-  },
-  {
-    "id_buku": "N003",
-    "judul_buku": "Novel - Hujan di Musim Panas",
-    "tipe": "Buku",
-    "stok": 3,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Novel",
-    "status": "Tersedia",
-    "pengarang": "Rani Aulia"
-  },
-  {
-    "id_buku": "P011",
-    "judul_buku": "Basis Data Terdistribusi",
-    "tipe": "Buku",
-    "stok": 1,
-    "kondisi_buku": "Baik",
-    "kategori_buku": "Pendidikan",
-    "status": "Dipinjam",
-    "pengarang": "Yohanes Kurnia"
-  }
+    {
+        "id_buku": "P001",
+        "judul_buku": "Belajar Python untuk Pemula",
+        "tipe": "Buku",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Andi Saputra"
+    },
+    {
+        "id_buku": "P002",
+        "judul_buku": "Sejarah Pergerakan Mahasiswa",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Dewi Kartika"
+    },
+    {
+        "id_buku": "S001",
+        "judul_buku": "Skripsi - Analisis Sistem Informasi Akademik",
+        "tipe": "Skripsi",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Rizky Maulana"
+    },
+    {
+        "id_buku": "J001",
+        "judul_buku": "Jurnal Teknologi Informasi Vol.5 No.2",
+        "tipe": "Jurnal",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Linda Wulandari"
+    },
+    {
+        "id_buku": "P003",
+        "judul_buku": "Panduan Praktikum Kimia Dasar",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Bambang Haryanto"
+    },
+    {
+        "id_buku": "P004",
+        "judul_buku": "Desain UI/UX Aplikasi Mobile",
+        "tipe": "Buku",
+        "stok": 3,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Sari Nuraini"
+    },
+    {
+        "id_buku": "J002",
+        "judul_buku": "Jurnal Psikologi Remaja Vol.3 No.1",
+        "tipe": "Jurnal",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Yusuf Ramadhan"
+    },
+    {
+        "id_buku": "S008",
+        "judul_buku": "Skripsi - Studi Penerapan Big Data",
+        "tipe": "Skripsi",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Nina Lestari"
+    },
+    {
+        "id_buku": "P005",
+        "judul_buku": "Pengantar Statistik untuk Penelitian",
+        "tipe": "Buku",
+        "stok": 3,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Hendra Gunawan"
+    },
+    {
+        "id_buku": "P006",
+        "judul_buku": "E-book Manajemen Proyek IT",
+        "tipe": "Buku Digital",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Wulan Maharani"
+    },
+    {
+        "id_buku": "K001",
+        "judul_buku": "Komik Petualangan Si Kancil",
+        "tipe": "Buku",
+        "stok": 4,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Komik",
+        "status": "Dipinjam",
+        "pengarang": "Eko Prasetyo"
+    },
+    {
+        "id_buku": "M001",
+        "judul_buku": "Majalah Teknologi Edisi Juli",
+        "tipe": "Buku",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Majalah",
+        "status": "Tersedia",
+        "pengarang": "Melati Rahayu"
+    },
+    {
+        "id_buku": "N001",
+        "judul_buku": "Novel - Cinta di Ujung Senja",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Novel",
+        "status": "Dipinjam",
+        "pengarang": "Tegar Alamsyah"
+    },
+    {
+        "id_buku": "K002",
+        "judul_buku": "Komik Robot Masa Depan",
+        "tipe": "Buku",
+        "stok": 3,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Komik",
+        "status": "Tersedia",
+        "pengarang": "Sinta Dewi"
+    },
+    {
+        "id_buku": "M002",
+        "judul_buku": "Majalah Sains Populer Edisi Maret",
+        "tipe": "Buku",
+        "stok": 4,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Majalah",
+        "status": "Dipinjam",
+        "pengarang": "Arif Nugroho"
+    },
+    {
+        "id_buku": "P007",
+        "judul_buku": "Pemrograman Java Lanjutan",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Galih Pratama"
+    },
+    {
+        "id_buku": "P008",
+        "judul_buku": "Matematika Diskrit",
+        "tipe": "Buku",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Intan Maharani"
+    },
+    {
+        "id_buku": "S002",
+        "judul_buku": "Skripsi - Pengaruh E-learning terhadap Hasil Belajar",
+        "tipe": "Skripsi",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Riko Ardiansyah"
+    },
+    {
+        "id_buku": "J003",
+        "judul_buku": "Jurnal Ekonomi dan Bisnis Vol.2 No.1",
+        "tipe": "Jurnal",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Monica Astari"
+    },
+    {
+        "id_buku": "P009",
+        "judul_buku": "Dasar-dasar Akuntansi",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Budi Hartono"
+    },
+    {
+        "id_buku": "N002",
+        "judul_buku": "Novel - Langit Merah di Atas Kyoto",
+        "tipe": "Buku",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Novel",
+        "status": "Tersedia",
+        "pengarang": "Citra Wulandari"
+    },
+    {
+        "id_buku": "K003",
+        "judul_buku": "Komik Ninja Legendaris",
+        "tipe": "Buku",
+        "stok": 3,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Komik",
+        "status": "Dipinjam",
+        "pengarang": "Fahmi Ardi"
+    },
+    {
+        "id_buku": "M003",
+        "judul_buku": "Majalah Ekowisata Edisi April",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Majalah",
+        "status": "Tersedia",
+        "pengarang": "Ratna Damayanti"
+    },
+    {
+        "id_buku": "P010",
+        "judul_buku": "Logika Matematika",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Donny Aditya"
+    },
+    {
+        "id_buku": "S003",
+        "judul_buku": "Skripsi - Strategi Pemasaran UMKM",
+        "tipe": "Skripsi",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Selvi Oktaviani"
+    },
+    {
+        "id_buku": "J004",
+        "judul_buku": "Jurnal Kesehatan Masyarakat Vol.1 No.3",
+        "tipe": "Jurnal",
+        "stok": 1,
+        "kondisi_buku": "Digital",
+        "kategori_buku": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Agus Mulyadi"
+    },
+    {
+        "id_buku": "K004",
+        "judul_buku": "Komik Legenda Garuda",
+        "tipe": "Buku",
+        "stok": 2,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Komik",
+        "status": "Dipinjam",
+        "pengarang": "Indah Permata"
+    },
+    {
+        "id_buku": "M004",
+        "judul_buku": "Majalah Kuliner Nusantara Edisi Mei",
+        "tipe": "Buku",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Majalah",
+        "status": "Dipinjam",
+        "pengarang": "Dedi Hidayat"
+    },
+    {
+        "id_buku": "N003",
+        "judul_buku": "Novel - Hujan di Musim Panas",
+        "tipe": "Buku",
+        "stok": 3,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Novel",
+        "status": "Tersedia",
+        "pengarang": "Rani Aulia"
+    },
+    {
+        "id_buku": "P011",
+        "judul_buku": "Basis Data Terdistribusi",
+        "tipe": "Buku",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "kategori_buku": "Pendidikan",
+        "status": "Dipinjam",
+        "pengarang": "Yohanes Kurnia"
+    }
 ]

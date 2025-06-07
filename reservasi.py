@@ -3,7 +3,7 @@ def data ():
     i = 0
 
     print ("Ketik 9999 untuk selesai !")
-    id_buku = int(input("Masukkan ID buku : "))
+    id_buku = str(input("Masukkan ID buku : "))
 
     while (id_buku != 9999):
         nama = str(input("Masukkan Nama Peminjam : "))
