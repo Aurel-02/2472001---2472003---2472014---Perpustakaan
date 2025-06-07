@@ -1,0 +1,10 @@
+[
+    {
+        "id_buku": "B001",
+        "id_anggota": "AG002"
+    },
+    {
+        "id_buku": "B002",
+        "id_anggota": "AG005"
+    }
+]
