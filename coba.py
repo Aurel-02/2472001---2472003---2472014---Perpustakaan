@@ -259,6 +259,7 @@ def pengembalian_buku(data_buku, data_peminjaman):
         json.dump(data_peminjaman, file, indent=4, ensure_ascii=False)
 
     print("Pengembalian buku berhasil.")
+    homepage()
 
 def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
     print("=== RESERVASI BUKU ===")
@@ -294,17 +295,30 @@ def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
                     print(f"Reservasi buku '{buku['judul_buku']}' berhasil disimpan.")
             else:
                 print("Buku saat ini tersedia. Silakan pinjam langsung.")
-            break
+            
 
     if (not buku_ditemukan):
         print("ID Buku tidak ditemukan.")
-
+        homepage()
+    
+    homepage()
 
 def menu_tamu():
+    print("")
     print("=== MENU TAMU ===")
     print("1. Lihat Koleksi Buku")
-    print("2. Daftar Akun Pengunjung")
     print("0. Kembali")
+
+    pilihan = int(input("Pilihan Anda (0/1): "))
+
+    if (pilihan==1):
+        lihat_daftar_buku()
+    elif (pilihan==0):
+        print ("Terima kasih sudah berkunjung ke perpustakaan Maranatha!")
+        homepage()
+    else: 
+        print ("Maaf, pilihan tidak tersedia")
+        menu_tamu()
     homepage()
 
 def page_staff():
@@ -331,6 +345,8 @@ def page_staff():
     else:
         print("Pilihan tidak valid. Silakan coba lagi.")
         page_staff()
+
+    homepage()
 
 def lihat_daftar_buku():
     print("")
@@ -364,6 +380,8 @@ def edit_kondisi_buku():
         lanjut = input("Ingin mengubah kondisi buku lain? (y/n): ")
         if (lanjut=="n"):
             homepage()
+
+        homepage()
     
 def edit_buku(data_buku):
     print ("")
@@ -484,6 +502,8 @@ def perpanjang_peminjaman(peminjaman, reservasi):
             print("Tanggal kembali baru       :", tampilkan_tanggal(peminjaman[i]["tanggal_kembali"]))
             with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
                 json.dump(peminjaman, file, indent=4)
+    
+    homepage()
 
 
 def main():
