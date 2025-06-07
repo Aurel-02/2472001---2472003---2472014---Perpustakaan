@@ -120,7 +120,7 @@ def page_anggota ():
     pilihan = int(input("Pilihan Anda (0-5): "))
 
     if (pilihan==1):
-        pinjam buku()
+        pinjam_buku()
     elif (pilihan==2):
         pengembalian_buku()
     elif (pilihan == 3):
