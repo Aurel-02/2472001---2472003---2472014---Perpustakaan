@@ -199,14 +199,16 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
                     print("3. Tidak jadi pinjam")
                     opsi = int(input("Pilihan Anda (1/2/3): "))
 
-                    if (opsi == "1"):
+                    if (opsi == 1):
                         reservasi_buku(data_buku, data_reservasi, id_anggota, id_buku)
                         return
-                    elif (opsi == "2"):
-                        break  
-                    else:
+                    elif (opsi == 2):
+                        continue
+                    elif (opsi == 3):
                         print("Peminjaman dibatalkan.")
                         return
+                    else: 
+                        print ("Tidak ada opsi pilihan")
                     
         if (not buku_ditemukan):
             print("ID Buku tidak ditemukan.")
