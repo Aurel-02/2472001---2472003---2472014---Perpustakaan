@@ -140,7 +140,6 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
     for pinjam in data_peminjaman:
         if (pinjam["id_anggota"] == id_anggota):
             sudah_pinjam = True
-            break
 
     if (sudah_pinjam):
         print("Anda masih memiliki buku yang sedang dipinjam.")
@@ -149,6 +148,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
             pengembalian_buku(data_buku, data_peminjaman)
         else:
             print("Silakan kembalikan buku terlebih dahulu sebelum meminjam yang baru.")
+        homepage()
         return
 
     while True:
@@ -215,7 +215,6 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
         if (not buku_ditemukan):
             print("ID Buku tidak ditemukan.")
             homepage()
-
 
 def pengembalian_buku(data_buku, data_peminjaman):
     print("")
@@ -510,21 +509,41 @@ def perpanjang_peminjaman(peminjaman, reservasi):
     homepage()
 
 def perpanjang_anggota():
-    print("\n=== PERPANJANGAN KEANGGOTAAN ===")
-    id_anggota = input("Masukkan ID Anggota: ")
-    nama = input("Masukkan Nama Anggota: ")
-    durasi = input("Durasi perpanjangan (contoh: 12 bulan): ")
+    print ("")
+    print ("=== PERPANJANGAN KEANGGOTAAN ===")
+    id_anggota = str(input("Masukkan ID Anggota: "))
+    nama = str(input("Masukkan Nama Anggota: "))
+    durasi = int(input("Durasi perpanjangan (dalam bulan): "))
 
     anggota_ditemukan = False
 
     for anggota in database["anggota"]:
-        if anggota["id_anggota"] == id_anggota and anggota["nama_anggota"] == nama:
+        if (id_anggota == anggota["id_anggota"]) and (nama == anggota["nama_anggota"]):
             anggota_ditemukan = True
 
-    if anggota_ditemukan:
-        print("Perpanjangan berhasil selama ",durasi)
-    else:
-        print("ID tidak terdaftar!")
+            tgl = anggota["exp_kartu"].split("-")
+            tahun = int(tgl[0])
+            bulan = int(tgl[1])
+            hari = int(tgl[2])
+
+            bulan += durasi
+            tahun += bulan // 12
+            bulan = bulan % 12
+            if (bulan == 0):
+                bulan = 12
+                tahun -= 1
+
+            anggota["exp_kartu"] = f"{tahun:04d}-{bulan:02d}-{hari:02d}"
+            print("Perpanjangan berhasil! Expired baru:", anggota["exp_kartu"])
+
+            with open('json/Anggota.json', 'w', encoding='utf-8') as file:
+                json.dump(database["anggota"], file, indent=4, ensure_ascii=False)
+            break
+
+    if not anggota_ditemukan:
+        print("ID atau nama tidak cocok! Perpanjangan gagal.")
+
+    homepage()
 
 def main():
     homepage()
