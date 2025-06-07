@@ -128,11 +128,8 @@ def page_anggota ():
         perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
     elif pilihan == 4:
         reservasi_buku(database["buku"], database["reservasi"])
-<<<<<<< HEAD
     elif (pilihan == 5):
         perpanjang_anggota()
-=======
->>>>>>> aabea9cdf9c47fae1946cee154b15c6735a07433
 
 def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
     print("")
