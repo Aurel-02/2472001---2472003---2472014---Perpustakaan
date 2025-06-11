@@ -552,19 +552,19 @@ def perpanjang_anggota():
         if (id_anggota == anggota["id_anggota"]) and (nama == anggota["nama_anggota"]):
             anggota_ditemukan = True
 
-            exp_date = datetime.strptime(anggota["exp_kartu"], "%Y-%m-%d")
+            exp_lama = datetime.strptime(anggota["exp_kartu"], "%Y-%m-%d")
+            perpanjang_sampai = tambah_bulan(exp_lama, durasi)
 
-            exp_baru = tambah_bulan(exp_date, durasi)
-
-            anggota["exp_kartu"] = exp_baru.strftime("%Y-%m-%d")
-            print("Perpanjangan berhasil! Expired baru:", anggota["exp_kartu"])
+            anggota["exp_kartu"] = perpanjang_sampai.strftime("%Y-%m-%d")
+            print("Perpanjangan berhasil!")
+            print(f"Keanggotaan berhasil diperpanjang hingga {perpanjang_sampai.strftime('%d-%m-%Y')}.")
 
             with open('json/Anggota.json', 'w', encoding='utf-8') as file:
                 json.dump(database["anggota"], file, indent=4, ensure_ascii=False)
             break
 
     if not anggota_ditemukan:
-        print("ID atau nama tidak cocok! Perpanjangan gagal.")
+        print("ID atau nama anggota tidak cocok! Perpanjangan gagal.")
 
 def main():
     homepage()
