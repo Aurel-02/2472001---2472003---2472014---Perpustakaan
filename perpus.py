@@ -380,20 +380,26 @@ def edit_kondisi_buku():
         buku_ditemukan = False
         for i in range(len(database["buku"])):
             if (id_buku == database["buku"][i]["id_buku"]):
+                buku = database["buku"][i]  # <- ini penting
                 print(f"Kondisi saat ini: {buku['kondisi_buku']}")
                 kondisi_baru = input("Masukkan kondisi baru: ")
                 buku["kondisi_buku"] = kondisi_baru
                 print("Kondisi buku berhasil diperbarui.")
+
+                with open('json/buku.json', 'w', encoding='utf-8') as file:
+                    json.dump(database["buku"], file, indent=4, ensure_ascii=False)
+
                 buku_ditemukan = True
                 break
-        if (not buku_ditemukan):
+
+        if not buku_ditemukan:
             print("Buku tidak ditemukan.")
 
         lanjut = input("Ingin mengubah kondisi buku lain? (y/n): ")
-        if (lanjut=="n"):
-            homepage()
+        if lanjut.lower() != "y":
+            break
 
-        homepage()
+    homepage()
     
 def edit_buku(data_buku):
     print ("")
