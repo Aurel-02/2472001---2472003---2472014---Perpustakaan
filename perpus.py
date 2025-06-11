@@ -1,6 +1,7 @@
 import json
 import datetime
 import sys
+from datetime import datetime
 
 with open('json/Anggota.json', 'r', encoding='utf-8') as file:
     anggota = json.load(file)
@@ -523,32 +524,39 @@ def perpanjang_peminjaman(peminjaman, reservasi):
     
     homepage()
 
+def tambah_bulan(tanggal, durasi_bulan):
+    tahun = tanggal.year
+    bulan = tanggal.month + durasi_bulan
+    hari = tanggal.day
+
+    tahun += (bulan - 1) // 12
+    bulan = ((bulan - 1) % 12) + 1
+
+    hari_maks = [31, 29 if tahun % 4 == 0 and (tahun % 100 != 0 or tahun % 400 == 0) else 28, 31, 30, 31, 30,
+                 31, 31, 30, 31, 30, 31][bulan - 1]
+    if (hari > hari_maks):
+        hari = hari_maks
+
+    return datetime(tahun, bulan, hari)
+
 def perpanjang_anggota():
-    print ("")
-    print ("=== PERPANJANGAN KEANGGOTAAN ===")
+    print()
+    print("=== PERPANJANGAN KEANGGOTAAN ===")
     id_anggota = str(input("Masukkan ID Anggota: "))
     nama = str(input("Masukkan Nama Anggota: "))
     durasi = int(input("Durasi perpanjangan (dalam bulan): "))
 
     anggota_ditemukan = False
 
-    for anggota in range (len(database["anggota"])):
+    for anggota in database["anggota"]:
         if (id_anggota == anggota["id_anggota"]) and (nama == anggota["nama_anggota"]):
             anggota_ditemukan = True
 
-            tgl = anggota["exp_kartu"].split("-")
-            tahun = int(tgl[0])
-            bulan = int(tgl[1])
-            hari = int(tgl[2])
+            exp_date = datetime.strptime(anggota["exp_kartu"], "%Y-%m-%d")
 
-            bulan += durasi
-            tahun += bulan // 12
-            bulan = bulan % 12
-            if (bulan == 0):
-                bulan = 12
-                tahun -= 1
+            exp_baru = tambah_bulan(exp_date, durasi)
 
-            anggota["exp_kartu"] = f"{tahun:04d}-{bulan:02d}-{hari:02d}"
+            anggota["exp_kartu"] = exp_baru.strftime("%Y-%m-%d")
             print("Perpanjangan berhasil! Expired baru:", anggota["exp_kartu"])
 
             with open('json/Anggota.json', 'w', encoding='utf-8') as file:
@@ -557,8 +565,6 @@ def perpanjang_anggota():
 
     if not anggota_ditemukan:
         print("ID atau nama tidak cocok! Perpanjangan gagal.")
-
-    homepage()
 
 def main():
     homepage()

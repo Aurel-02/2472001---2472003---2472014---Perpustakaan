@@ -1,52 +1,52 @@
 [
-  {
-    "nama_anggota": "Andi Saputra",
-    "id_anggota": "AG001",
-    "exp_kartu": "2026-06-01"
-  },
-  {
-    "nama_anggota": "Budi Santoso",
-    "id_anggota": "AG002",
-    "exp_kartu": "2025-12-15"
-  },
-  {
-    "nama_anggota": "Citra Lestari",
-    "id_anggota": "AG003",
-    "exp_kartu": "2027-03-20"
-  },
-  {
-    "nama_anggota": "Dewi Anggraini",
-    "id_anggota": "AG004",
-    "exp_kartu": "2025-09-10"
-  },
-  {
-    "nama_anggota": "Eko Prasetyo",
-    "id_anggota": "AG005",
-    "exp_kartu": "2026-11-05"
-  },
-  {
-    "nama_anggota": "Fajar Maulana",
-    "id_anggota": "AG006",
-    "exp_kartu": "2027-01-30"
-  },
-  {
-    "nama_anggota": "Gita Rahmawati",
-    "id_anggota": "AG007",
-    "exp_kartu": "2025-08-25"
-  },
-  {
-    "nama_anggota": "Hendra Wijaya",
-    "id_anggota": "AG008",
-    "exp_kartu": "2026-04-18"
-  },
-  {
-    "nama_anggota": "Indah Permatasari",
-    "id_anggota": "AG009",
-    "exp_kartu": "2027-07-12"
-  },
-  {
-    "nama_anggota": "Joko Riyadi",
-    "id_anggota": "AG010",
-    "exp_kartu": "2025-10-07"
-  }
+    {
+        "nama_anggota": "Andi Saputra",
+        "id_anggota": "AG001",
+        "exp_kartu": "2026-11-01"
+    },
+    {
+        "nama_anggota": "Budi Santoso",
+        "id_anggota": "AG002",
+        "exp_kartu": "2026-04-15"
+    },
+    {
+        "nama_anggota": "Citra Lestari",
+        "id_anggota": "AG003",
+        "exp_kartu": "2027-03-20"
+    },
+    {
+        "nama_anggota": "Dewi Anggraini",
+        "id_anggota": "AG004",
+        "exp_kartu": "2025-09-10"
+    },
+    {
+        "nama_anggota": "Eko Prasetyo",
+        "id_anggota": "AG005",
+        "exp_kartu": "2026-11-05"
+    },
+    {
+        "nama_anggota": "Fajar Maulana",
+        "id_anggota": "AG006",
+        "exp_kartu": "2027-01-30"
+    },
+    {
+        "nama_anggota": "Gita Rahmawati",
+        "id_anggota": "AG007",
+        "exp_kartu": "2025-08-25"
+    },
+    {
+        "nama_anggota": "Hendra Wijaya",
+        "id_anggota": "AG008",
+        "exp_kartu": "2026-04-18"
+    },
+    {
+        "nama_anggota": "Indah Permatasari",
+        "id_anggota": "AG009",
+        "exp_kartu": "2027-07-12"
+    },
+    {
+        "nama_anggota": "Joko Riyadi",
+        "id_anggota": "AG010",
+        "exp_kartu": "2025-10-07"
+    }
 ]
