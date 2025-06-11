@@ -524,39 +524,26 @@ def perpanjang_peminjaman(peminjaman, reservasi):
     homepage()
 
 def perpanjang_anggota():
-    print ("")
-    print ("=== PERPANJANGAN KEANGGOTAAN ===")
-    id_anggota = str(input("Masukkan ID Anggota: "))
-    nama = str(input("Masukkan Nama Anggota: "))
-    durasi = int(input("Durasi perpanjangan (dalam bulan): "))
+    print("=== PERPANJANGAN KEANGGOTAAN ===")
+    id_anggota = str(input("Masukkan ID Anggota Anda: "))
 
     anggota_ditemukan = False
-
-    for anggota in range (len(database["anggota"])):
-        if (id_anggota == anggota["id_anggota"]) and (nama == anggota["nama_anggota"]):
+    for i in range(len(database["anggota"])):
+        if (id_anggota==database["anggota"][i]["id_anggota"]):
             anggota_ditemukan = True
+            hari_ini = datetime.date.today()
+            perpanjang_sampai = hari_ini.replace(year=hari_ini.year + 1)
 
-            tgl = anggota["exp_kartu"].split("-")
-            tahun = int(tgl[0])
-            bulan = int(tgl[1])
-            hari = int(tgl[2])
-
-            bulan += durasi
-            tahun += bulan // 12
-            bulan = bulan % 12
-            if (bulan == 0):
-                bulan = 12
-                tahun -= 1
-
-            anggota["exp_kartu"] = f"{tahun:04d}-{bulan:02d}-{hari:02d}"
-            print("Perpanjangan berhasil! Expired baru:", anggota["exp_kartu"])
+            database["anggota"][i]["masa_berlaku"] = perpanjang_sampai.strftime("%d-%m-%Y")
 
             with open('json/Anggota.json', 'w', encoding='utf-8') as file:
                 json.dump(database["anggota"], file, indent=4, ensure_ascii=False)
+
+            print(f"Keanggotaan berhasil diperpanjang hingga {perpanjang_sampai.strftime('%d-%m-%Y')}.")
             break
 
     if not anggota_ditemukan:
-        print("ID atau nama tidak cocok! Perpanjangan gagal.")
+        print("ID Anggota tidak ditemukan.")
 
     homepage()
 
