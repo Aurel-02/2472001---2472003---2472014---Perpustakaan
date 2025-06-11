@@ -110,7 +110,7 @@ def login_mahasiswa():
         homepage()
 
 def page_anggota ():
-    print ("")
+    print ()
     print ("Silakan pilih kegiatan yang akan kamu lakukan!")
     print ("1. Pinjam Buku")
     print ("2. Pengembalian Buku")
@@ -120,24 +120,24 @@ def page_anggota ():
     print ("0. Kembali")
     pilihan = int(input("Pilihan Anda (0-5): "))
 
-    if pilihan == 1:
+    if (pilihan == 1):
         pinjam_buku(database["buku"], database["peminjaman"], database["reservasi"])
-    elif pilihan == 2:
+    elif (pilihan == 2):
         pengembalian_buku(database["buku"], database["peminjaman"])
-    elif pilihan == 3:
+    elif (pilihan == 3):
         perpanjang_peminjaman(database["peminjaman"], database["reservasi"])
-    elif pilihan == 4:
+    elif (pilihan == 4):
         reservasi_buku(database["buku"], database["reservasi"])
     elif (pilihan == 5):
         perpanjang_anggota()
 
 def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
-    print("")
+    print()
     print("=== PINJAM BUKU ===")
     id_anggota = input("Masukkan ID Anggota: ")
 
     sudah_pinjam = False
-    for pinjam in data_peminjaman:
+    for pinjam in range (data_peminjaman):
         if (pinjam["id_anggota"] == id_anggota):
             sudah_pinjam = True
 
@@ -151,11 +151,11 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
         homepage()
         return
 
-    while True:
+    while (True):
         id_buku = input("Masukkan ID Buku: ")
         buku_ditemukan = False
 
-        for buku in data_buku:
+        for buku in range (data_buku):
             if (id_buku == buku["id_buku"]):
                 buku_ditemukan = True
                 if (buku["status"] == "Tersedia"):
@@ -217,15 +217,15 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
             homepage()
 
 def pengembalian_buku(data_buku, data_peminjaman):
-    print("")
+    print()
     print("=== PENGEMBALIAN BUKU ===")
     id_buku = str(input("Masukkan ID Buku yang ingin dikembalikan: "))
     id_anggota = str(input("Masukkan ID Anggota: "))
 
     index_peminjaman = -1
 
-    for i, pinjam in enumerate(data_peminjaman):
-        if (pinjam["id_buku"] == id_buku and pinjam["id_anggota"] == id_anggota):
+    for i, pinjam in range (enumerate(data_peminjaman)):
+        if (pinjam["id_buku"] == id_buku) and (pinjam["id_anggota"] == id_anggota):
             index_peminjaman = i
             break
 
@@ -248,7 +248,7 @@ def pengembalian_buku(data_buku, data_peminjaman):
     else:
         print("Buku dikembalikan tepat waktu. Tidak ada denda.")
 
-    for buku in data_buku:
+    for buku in range (data_buku):
         if (buku["id_buku"] == id_buku):
             buku["status"] = "Tersedia"
             break
@@ -273,13 +273,13 @@ def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
         
     buku_ditemukan = False
 
-    for buku in data_buku:
+    for buku in range (data_buku):
         if (buku["id_buku"] == id_buku):
             buku_ditemukan = True
             if (buku["status"] == "Dipinjam"):
                 sudah_reservasi = False
-                for reservasi in data_reservasi:
-                    if (reservasi["id_buku"] == id_buku and reservasi["id_anggota"] == id_anggota):
+                for reservasi in range (data_reservasi):
+                    if (reservasi["id_buku"] == id_buku) and (reservasi["id_anggota"] == id_anggota):
                         sudah_reservasi = True
                         break
 
