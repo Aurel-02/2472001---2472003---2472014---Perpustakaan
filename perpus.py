@@ -15,7 +15,7 @@
 # buku, pengunjung, staff, peminjaman, dan reservasi. 
 
 import json
-import datetime
+from datetime import datetime
 import sys
 
 with open('json/Anggota.json', 'r', encoding='utf-8') as file:
@@ -169,6 +169,16 @@ def page_anggota ():
     if (pilihan==0):
         homepage()
 
+# Fungsi untuk menambahkan hari pada tanggal
+# timestamp_awal : var. untuk menyimpan timestamp dari tanggal awal (float)
+# detik_tambahan : var. untuk menghitung jumlah detik yang ditambahkan (int)
+# timestamp_baru : var. untuk menyimpan timestamp baru setelah penambahan (float)
+def tambah_hari(tanggal_awal, durasi_hari):
+    timestamp_awal = tanggal_awal.timestamp()
+    detik_tambahan = durasi_hari * 86400 
+    timestamp_baru = timestamp_awal + detik_tambahan
+    return datetime.fromtimestamp(timestamp_baru)
+
 # Fungsi untuk meminjam buku
 # id_anggota : var. input untuk ID anggota (str)
 # sudah_pinjam : var. boolean untuk mengecek apakah anggota 
@@ -190,38 +200,34 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
     print("=== PINJAM BUKU ===")
     id_anggota = str(input("Masukkan ID Anggota: "))
 
-    sudah_pinjam = False
-    for pinjam in range(len(data_peminjaman)):
-        if data_peminjaman[pinjam]["id_anggota"] == id_anggota:
-            sudah_pinjam = True
+    sudah_pinjam = any(p["id_anggota"] == id_anggota for p in data_peminjaman)
 
     if (sudah_pinjam):
         print("Anda masih memiliki buku yang sedang dipinjam.")
         pilihan = str(input("Apakah Anda ingin mengembalikan buku terlebih dahulu? (Ya/Tidak): "))
-        if pilihan.lower() == "ya":
+        if (pilihan.lower() == "ya"):
             pengembalian_buku(data_buku, data_peminjaman)
         else:
             print("Silakan kembalikan buku terlebih dahulu sebelum meminjam yang baru.")
         page_anggota()
-        return  
+        return
 
     while True:
         id_buku = str(input("Masukkan ID Buku: "))
         buku_ditemukan = False
 
-        for buku in range(len(data_buku)):
-            if id_buku == data_buku[buku]["id_buku"]:
+        for buku in data_buku:
+            if (id_buku == buku["id_buku"]):
                 buku_ditemukan = True
-                if data_buku[buku]["status"] == "Tersedia":
+                if (buku["status"] == "Tersedia"):
                     durasi = int(input("Masukkan lama peminjaman (maksimal 14 hari): "))
-                    if durasi > 14:
+                    if (durasi > 14):
                         print("Durasi melebihi 14 hari, diset ke 14 hari.")
                         durasi = 14
 
                     tanggal_input = input("Masukkan tanggal pinjam (dd-mm-yyyy): ")
-                    hari, bulan, tahun = map(int, tanggal_input.split('-'))
-                    tanggal_pinjam = datetime.date(tahun, bulan, hari)
-                    tanggal_kembali = tanggal_pinjam + datetime.timedelta(days=durasi)
+                    tanggal_pinjam = datetime.strptime(tanggal_input, "%d-%m-%Y")
+                    tanggal_kembali = tambah_hari(tanggal_pinjam, durasi)
 
                     tanggal_pinjam_list = [tanggal_pinjam.day, tanggal_pinjam.month, tanggal_pinjam.year]
                     tanggal_kembali_list = [tanggal_kembali.day, tanggal_kembali.month, tanggal_kembali.year]
@@ -240,38 +246,39 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
                     with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
                         json.dump(data_peminjaman, file, indent=4, ensure_ascii=False)
 
-                    data_buku[buku]["status"] = "Dipinjam"
+                    buku["status"] = "Dipinjam"
                     with open('json/buku.json', 'w', encoding='utf-8') as file:
                         json.dump(data_buku, file, indent=4, ensure_ascii=False)
 
-                    print(f"Buku '{data_buku[buku]['judul_buku']}' berhasil dipinjam selama {durasi} hari.")
+                    print(f"Buku '{buku['judul_buku']}' berhasil dipinjam selama {durasi} hari.")
                     print("Data peminjaman berhasil disimpan.")
-                    break  
+                    break
 
                 else:
-                    print(f"Buku '{data_buku[buku]['judul_buku']}' saat ini sedang dipinjam.")
+                    print(f"Buku '{buku['judul_buku']}' saat ini sedang dipinjam.")
                     print("1. Reservasi buku")
                     print("2. Memilih buku lain")
                     print("3. Tidak jadi pinjam")
                     opsi = int(input("Pilihan Anda (1/2/3): "))
 
-                    if opsi == 1:
+                    if (opsi == 1):
                         reservasi_buku(data_buku, data_reservasi, id_anggota, id_buku)
-                    elif opsi == 2:
+                        return
+                    elif (opsi == 2):
                         return pinjam_buku(data_buku, data_peminjaman, data_reservasi)
-                    elif opsi == 3:
+                    elif (opsi == 3):
                         print("Peminjaman dibatalkan.")
-                        break 
+                        return
                     else:
-                        print("Tidak ada opsi pilihan")
-                        break
+                        print("Pilihan tidak valid.")
+                        return
 
-        if not buku_ditemukan:
+        if (not buku_ditemukan):
             print("ID Buku tidak ditemukan.")
         else:
-            break  
+            break
 
-    page_anggota()  
+    page_anggota()
 
 # Fungsi untuk mengembalikan buku
 # id_buku : var. input untuk ID Buku yang ingin dikembalikan (str)
@@ -304,11 +311,11 @@ def pengembalian_buku(data_buku, data_peminjaman):
         return
 
     tanggal_kembali = data_peminjaman[index_peminjaman]["tanggal_kembali"]
-    tanggal_kembali_obj = datetime.date(tanggal_kembali[2], tanggal_kembali[1], tanggal_kembali[0])
+    tanggal_kembali_obj = datetime(tanggal_kembali[2], tanggal_kembali[1], tanggal_kembali[0])
 
     hari_ini = input("Masukkan tanggal pengembalian (dd-mm-yyyy): ")
     h, b, t = map(int, hari_ini.split('-'))
-    tanggal_pengembalian = datetime.date(t, b, h)
+    tanggal_pengembalian = datetime(t, b, h)
 
     selisih_hari = (tanggal_pengembalian - tanggal_kembali_obj).days
 
@@ -653,28 +660,33 @@ def perpanjang_anggota():
     print()
     print("=== PERPANJANGAN KEANGGOTAAN ===")
     id_anggota = str(input("Masukkan ID Anggota: "))
-    nama = str(input("Masukkan Nama Anggota: "))
     durasi = int(input("Durasi perpanjangan (dalam bulan): "))
 
     anggota_ditemukan = False
 
-    for anggota in range (database["anggota"]):
-        if (id_anggota == anggota["id_anggota"]) and (nama == anggota["nama_anggota"]):
+    with open('json/Anggota.json', 'r', encoding='utf-8') as file:
+        data_anggota = json.load(file)
+
+    for anggota in data_anggota:
+        if (id_anggota == anggota["id_anggota"]):
             anggota_ditemukan = True
+            print(f"Nama Anggota: {anggota['nama_anggota']}")
 
             exp_lama = datetime.strptime(anggota["exp_kartu"], "%Y-%m-%d")
             perpanjang_sampai = tambah_bulan(exp_lama, durasi)
 
             anggota["exp_kartu"] = perpanjang_sampai.strftime("%Y-%m-%d")
+
             print("Perpanjangan berhasil!")
             print(f"Keanggotaan berhasil diperpanjang hingga {perpanjang_sampai.strftime('%d-%m-%Y')}.")
 
             with open('json/Anggota.json', 'w', encoding='utf-8') as file:
-                json.dump(database["anggota"], file, indent=4, ensure_ascii=False)
+                json.dump(data_anggota, file, indent=4, ensure_ascii=False)
             break
 
-    if (not anggota_ditemukan):
-        print("ID atau nama anggota tidak cocok! Perpanjangan gagal.")
+    if not anggota_ditemukan:
+        print("ID anggota tidak ditemukan! Perpanjangan gagal.")
+
     page_anggota()
 
 # Fungsi utama untuk menjalankan program

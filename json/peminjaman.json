@@ -1,37 +1,5 @@
 [
     {
-        "id_buku": "S002",
-        "id_anggota": "AG001",
-        "tanggal_pinjam": [
-            7,
-            6,
-            2025
-        ],
-        "tanggal_kembali": [
-            17,
-            6,
-            2025
-        ],
-        "durasi": 5,
-        "sudah_perpanjang": true
-    },
-    {
-        "id_buku": "J004",
-        "id_anggota": "AG002",
-        "tanggal_pinjam": [
-            7,
-            6,
-            2025
-        ],
-        "tanggal_kembali": [
-            12,
-            6,
-            2025
-        ],
-        "durasi": 5,
-        "sudah_perpanjang": false
-    },
-    {
         "id_buku": "P010",
         "id_anggota": "AG003",
         "tanggal_pinjam": [
