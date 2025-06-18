@@ -10,5 +10,13 @@
     {
         "id_buku": "P020",
         "id_anggota": "AG004"
+    },
+    {
+        "id_buku": "P020",
+        "id_anggota": "& C:/Users/Asus/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/Asus/OneDrive/Documents/GitHub/2472001---2472003---2472014---Perpustakaan/perpus.py"
+    },
+    {
+        "id_buku": "J002",
+        "id_anggota": "AG005"
     }
 ]

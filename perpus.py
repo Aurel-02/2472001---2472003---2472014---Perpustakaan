@@ -353,6 +353,7 @@ def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
             buku_ditemukan = True
             if (data_buku[i]["status"] == "Dipinjam"):
                 sudah_reservasi = False
+                buku = data_buku[i]
                 for j in range(len(data_reservasi)):
                     if (data_reservasi[j]["id_buku"] == id_buku) and (data_reservasi[j]["id_anggota"] == id_anggota):
                         sudah_reservasi = True
