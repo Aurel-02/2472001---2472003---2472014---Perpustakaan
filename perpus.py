@@ -141,7 +141,7 @@ def login_mahasiswa():
         page_anggota()
     else:
         print("ID anggota tidak ditemukan. Akses ditolak.")
-        homepage()
+        login_pengunjung()
 
 # Fungsi untuk menampilkan halaman anggota perpustakaan
 # pilihan : var. input untuk memilih kegiatan yang akan dilakukan (int)
@@ -166,6 +166,8 @@ def page_anggota ():
         reservasi_buku(database["buku"], database["reservasi"])
     elif (pilihan == 5):
         perpanjang_anggota()
+    if (pilihan==0):
+        homepage()
 
 # Fungsi untuk meminjam buku
 # id_anggota : var. input untuk ID anggota (str)
@@ -200,8 +202,8 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
             pengembalian_buku(data_buku, data_peminjaman)
         else:
             print("Silakan kembalikan buku terlebih dahulu sebelum meminjam yang baru.")
-        homepage()
-        return
+        page_anggota()
+        return  # keluar agar tidak lanjut ke bagian bawah
 
     while True:
         id_buku = str(input("Masukkan ID Buku: "))
@@ -244,7 +246,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
 
                     print(f"Buku '{data_buku[buku]['judul_buku']}' berhasil dipinjam selama {durasi} hari.")
                     print("Data peminjaman berhasil disimpan.")
-                    return
+                    break  # keluar dari for-loop
 
                 else:
                     print(f"Buku '{data_buku[buku]['judul_buku']}' saat ini sedang dipinjam.")
@@ -255,18 +257,22 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
 
                     if opsi == 1:
                         reservasi_buku(data_buku, data_reservasi, id_anggota, id_buku)
-                        return
+                        break  # setelah reservasi, keluar dari loop
                     elif opsi == 2:
-                        continue
+                        break  # kembali ke awal while
                     elif opsi == 3:
                         print("Peminjaman dibatalkan.")
-                        return
+                        break 
                     else:
                         print("Tidak ada opsi pilihan")
+                        break
 
         if not buku_ditemukan:
             print("ID Buku tidak ditemukan.")
-            homepage()
+        else:
+            break  
+
+    page_anggota()  
 
 # Fungsi untuk mengembalikan buku
 # id_buku : var. input untuk ID Buku yang ingin dikembalikan (str)
@@ -327,7 +333,7 @@ def pengembalian_buku(data_buku, data_peminjaman):
         json.dump(data_peminjaman, file, indent=4, ensure_ascii=False)
 
     print("Pengembalian buku berhasil.")
-    homepage()
+    page_anggota()
 
 # Fungsi untuk reservasi buku
 # id_anggota : var. input untuk ID Anggota (str)
@@ -373,9 +379,9 @@ def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
 
     if (not buku_ditemukan):
         print("ID Buku tidak ditemukan.")
-        homepage()
+        page_anggota()
     
-    homepage()
+    page_anggota()
 
 # Fungsi untuk menampilkan menu tamu
 # pilihan : var. input untuk memilih apakah ingin melihat koleksi 
@@ -425,7 +431,7 @@ def page_staff():
         print("Pilihan tidak valid. Silakan coba lagi.")
         page_staff()
 
-    homepage()
+    page_staff()
 
 # Fungsi untuk melihat daftar buku
 # Ini akan menampilkan daftar buku yang ada di perpustakaan
@@ -436,7 +442,7 @@ def lihat_daftar_buku():
         buku = database["buku"][i]
         print(f"{buku['id_buku']} - {buku['judul_buku']} ({buku['stok']})({buku['status']})")
 
-    homepage()
+    page_staff()
 
 # Fungsi untuk mengecek jumlah stok buku
 def cek_jumlah_stok():
@@ -445,7 +451,7 @@ def cek_jumlah_stok():
     for i in range(len(database["buku"])):
         buku = database["buku"][i]
         print(f"{buku['id_buku']} - {buku['judul_buku']}: {buku['stok']} buah")
-    homepage()
+    page_staff()
 
 # Fungsi untuk mengedit kondisi buku
 # id_buku : var. input untuk ID Buku yang ingin diubah kondisinya (str)
@@ -478,20 +484,7 @@ def edit_kondisi_buku():
             break
 
     homepage()
-
-# Fungsi untuk mengedit buku
-# pilihan : var. input untuk memilih apakah ingin menambah buku baru (int)
-# id_buku : var. input untuk ID Buku yang ingin ditambahkan (str)
-# judul : var. input untuk judul buku (str)
-# tipe : var. input untuk tipe buku (str)
-# stok : var. input untuk stok awal buku (int)
-# kondisi : var. input untuk kondisi awal buku (str)
-# jenis : var. input untuk jenis buku (str)
-# status : var. input untuk status buku (str)
-# pengarang : var. input untuk pengarang buku (str)
-# buku_baru : var. untuk menyimpan data buku baru (dict)
-# cari_id : var. input untuk ID Buku yang ingin dihapus (str)
-# temu : var. boolean untuk mengecek apakah ID Buku ditemukan (boolean)
+    
 def edit_buku(data_buku):
     print ("")
     print ("Apa yang ingin kamu lakukan?")
@@ -555,7 +548,7 @@ def edit_buku(data_buku):
     else:
         print("Pilihan tidak valid.")
         edit_buku(database["buku"])
-    homepage()
+    page_staff()
 
 # Fungsi untuk menambahkan tanggal
 # total_hari : var. untuk menghitung total hari dari tahun, 
@@ -627,7 +620,7 @@ def perpanjang_peminjaman(peminjaman, reservasi):
             with open('json/peminjaman.json', 'w', encoding='utf-8') as file:
                 json.dump(peminjaman, file, indent=4)
     
-    homepage()
+    page_anggota()
 
 # Fungsi untuk menambahkan bulan pada tanggal
 # tahun : var. untuk menyimpan tahun dari tanggal (int)
@@ -683,6 +676,7 @@ def perpanjang_anggota():
 
     if (not anggota_ditemukan):
         print("ID atau nama anggota tidak cocok! Perpanjangan gagal.")
+    page_anggota()
 
 # Fungsi utama untuk menjalankan program
 def main():
