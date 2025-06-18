@@ -66,7 +66,7 @@
         "stok": 1,
         "kondisi_buku": "Digital",
         "kategori_buku": "Pendidikan",
-        "status": "Dipinjam",
+        "status": "Tersedia",
         "pengarang": "Yusuf Ramadhan"
     },
     {
@@ -294,9 +294,19 @@
         "judul_buku": "Basis Data Terdistribusi",
         "tipe": "Buku",
         "stok": 1,
-        "kondisi_buku": "Baik",
+        "kondisi_buku": "Rusak",
         "kategori_buku": "Pendidikan",
         "status": "Dipinjam",
         "pengarang": "Yohanes Kurnia"
+    },
+    {
+        "id_buku": "P020",
+        "judul_buku": "Belajar CSS",
+        "tipe": "Buku",
+        "stok": 1,
+        "kondisi_buku": "Baik",
+        "jenis": "Pendidikan",
+        "status": "Tersedia",
+        "pengarang": "Mayang"
     }
 ]

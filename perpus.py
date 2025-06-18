@@ -1,7 +1,6 @@
 import json
 import datetime
 import sys
-from datetime import datetime
 
 with open('json/Anggota.json', 'r', encoding='utf-8') as file:
     anggota = json.load(file)
