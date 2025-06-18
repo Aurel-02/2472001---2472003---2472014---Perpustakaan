@@ -483,7 +483,7 @@ def edit_kondisi_buku():
         if (lanjut.lower() != "y"):
             break
 
-    homepage()
+    page_staff()
     
 def edit_buku(data_buku):
     print ("")
@@ -542,7 +542,7 @@ def edit_buku(data_buku):
                 else:
                     print("Penghapusan dibatalkan.")
                 temu = True
-                homepage()
+                page_staff()
         if (not temu):
             print("ID buku tidak ditemukan.")
     else:
