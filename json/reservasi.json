@@ -6,5 +6,9 @@
     {
         "id_buku": "B002",
         "id_anggota": "AG005"
+    },
+    {
+        "id_buku": "P020",
+        "id_anggota": "AG004"
     }
 ]

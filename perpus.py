@@ -246,7 +246,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
 
                     print(f"Buku '{data_buku[buku]['judul_buku']}' berhasil dipinjam selama {durasi} hari.")
                     print("Data peminjaman berhasil disimpan.")
-                    break  # keluar dari for-loop
+                    break  
 
                 else:
                     print(f"Buku '{data_buku[buku]['judul_buku']}' saat ini sedang dipinjam.")
@@ -257,9 +257,8 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
 
                     if opsi == 1:
                         reservasi_buku(data_buku, data_reservasi, id_anggota, id_buku)
-                        break  # setelah reservasi, keluar dari loop
                     elif opsi == 2:
-                        break  # kembali ke awal while
+                        break  
                     elif opsi == 3:
                         print("Peminjaman dibatalkan.")
                         break 
