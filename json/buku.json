@@ -66,7 +66,7 @@
         "stok": 1,
         "kondisi_buku": "Digital",
         "kategori_buku": "Pendidikan",
-        "status": "Tersedia",
+        "status": "Dipinjam",
         "pengarang": "Yusuf Ramadhan"
     },
     {
@@ -206,7 +206,7 @@
         "stok": 1,
         "kondisi_buku": "Baik",
         "kategori_buku": "Novel",
-        "status": "Tersedia",
+        "status": "Dipinjam",
         "pengarang": "Citra Wulandari"
     },
     {
@@ -286,7 +286,7 @@
         "stok": 3,
         "kondisi_buku": "Baik",
         "kategori_buku": "Novel",
-        "status": "Tersedia",
+        "status": "Dipinjam",
         "pengarang": "Rani Aulia"
     },
     {
@@ -306,7 +306,7 @@
         "stok": 1,
         "kondisi_buku": "Baik",
         "jenis": "Pendidikan",
-        "status": "Tersedia",
+        "status": "Dipinjam",
         "pengarang": "Mayang"
     }
 ]

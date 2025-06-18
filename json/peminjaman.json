@@ -46,5 +46,69 @@
         ],
         "durasi": 3,
         "sudah_perpanjang": false
+    },
+    {
+        "id_buku": "P020",
+        "id_anggota": "AG009",
+        "tanggal_pinjam": [
+            18,
+            6,
+            2025
+        ],
+        "tanggal_kembali": [
+            28,
+            6,
+            2025
+        ],
+        "durasi": 10,
+        "sudah_perpanjang": false
+    },
+    {
+        "id_buku": "N003",
+        "id_anggota": "AG010",
+        "tanggal_pinjam": [
+            18,
+            6,
+            2025
+        ],
+        "tanggal_kembali": [
+            28,
+            6,
+            2025
+        ],
+        "durasi": 10,
+        "sudah_perpanjang": false
+    },
+    {
+        "id_buku": "N002",
+        "id_anggota": "AG008",
+        "tanggal_pinjam": [
+            18,
+            6,
+            2025
+        ],
+        "tanggal_kembali": [
+            28,
+            6,
+            2025
+        ],
+        "durasi": 10,
+        "sudah_perpanjang": false
+    },
+    {
+        "id_buku": "J002",
+        "id_anggota": "AG007",
+        "tanggal_pinjam": [
+            18,
+            6,
+            2025
+        ],
+        "tanggal_kembali": [
+            28,
+            6,
+            2025
+        ],
+        "durasi": 10,
+        "sudah_perpanjang": false
     }
 ]
