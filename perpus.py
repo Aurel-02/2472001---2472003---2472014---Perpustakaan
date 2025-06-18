@@ -258,7 +258,6 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
                     if opsi == 1:
                         reservasi_buku(data_buku, data_reservasi, id_anggota, id_buku)
                     elif opsi == 2:
-                        print("Silakan pilih buku lain.")
                         return pinjam_buku(data_buku, data_peminjaman, data_reservasi)
                     elif opsi == 3:
                         print("Peminjaman dibatalkan.")
