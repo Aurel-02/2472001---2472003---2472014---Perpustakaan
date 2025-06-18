@@ -1,3 +1,19 @@
+# Nama file : perpus.py
+
+# Nama Penulis :
+# 2472001 - Aurellia Yemima Tomy
+# 2472003 - Maria Mayang Prihariyanti Panduwardani
+# 2472014 - Archangela Sheilla Hariyanto Sundjaya
+
+# Tujuan Program:
+# Program ini adalah program sistem perpustakaan sederhana yang memungkinkan 
+# pengguna (Staff, Anggota perpustakaan, pengunjung) untuk melakukan berbagai
+# kegiatan seperti peminjaman buku, pengembalian buku, reservasi buku, dan 
+# perpanjangan keanggotaan.
+
+# Program ini menggunakan file JSON sebagai database untuk menyimpan data anggota,
+# buku, pengunjung, staff, peminjaman, dan reservasi. 
+
 import json
 import datetime
 import sys
@@ -29,6 +45,10 @@ database = {
     "reservasi": reservasi
 }
 
+# Fungsi untuk menampilkan homepage perpustakaan
+# Fungsi ini akan menampilkan pilihan peran pengguna (Staff atau Pengunjung) 
+# dan mengarahkan ke fungsi login yang sesuai.
+# peran : var. input untuk memilih peran pengguna (int)
 def homepage():
     print ("="*50)
     print (" === Selamat datang di perpustakaan Maranatha! === ")
@@ -52,6 +72,11 @@ def homepage():
         print ("Maaf, pilihan tidak tersedia.")
         homepage()
 
+# Fungsi untuk login staff perpustakaan
+# inp_id : var. input utk ID staff (str)
+# staff_bener : var. boolean untuk mengecek apakah ID staff benar (boolean)
+# i : var. index untuk iterasi (int)
+# N : var. jumlah staff dalam database (int)    
 def login_staff():
     print ("")
     print ("=== Halo staff perpustakaan Maranatha! ===")
@@ -75,6 +100,8 @@ def login_staff():
         print("ID Staff tidak ditemukan. Akses ditolak.")
         homepage()
 
+# Fungsi untuk login pengunjung 
+# pilihan : var. input utk memilih apakah pengunjung mahasiswa atau tamu (str)
 def login_pengunjung():
     print("=== PENGUNJUNG ===")
     print("Apakah Anda mahasiswa?")
@@ -93,10 +120,15 @@ def login_pengunjung():
         print("Maaf, pilihan tidak tersedia.")
         homepage()
 
+# Fungsi untuk login mahasiswa
+# inp_id : var. input untuk ID anggota (str)
+# mhs : var. untuk menyimpan data mahasiswa yang ditemukan (dict)
+# a : var. index untuk iterasi (int)
+
 def login_mahasiswa():  
     print ("")
     print ("=== Halo mahasiswa perpustakaan Maranatha! ===")
-    inp_id = input("Silakan masukkan ID Anggota: ")
+    inp_id = str(input("Silakan masukkan ID Anggota: "))
 
     mhs = None
     for a in range (len(database["anggota"])):
@@ -111,6 +143,8 @@ def login_mahasiswa():
         print("ID anggota tidak ditemukan. Akses ditolak.")
         homepage()
 
+# Fungsi untuk menampilkan halaman anggota perpustakaan
+# pilihan : var. input untuk memilih kegiatan yang akan dilakukan (int)
 def page_anggota ():
     print ()
     print ("Silakan pilih kegiatan yang akan kamu lakukan!")
@@ -133,19 +167,35 @@ def page_anggota ():
     elif (pilihan == 5):
         perpanjang_anggota()
 
+# Fungsi untuk meminjam buku
+# id_anggota : var. input untuk ID anggota (str)
+# sudah_pinjam : var. boolean untuk mengecek apakah anggota 
+# sudah meminjam buku (boolean)
+# pilihan : var. input utk menampung pilihan mengembalikan buku (str)
+# id_buku : var. input utk ID Buku (str)
+# buku_ditemukan : var. boolean untuk mengecek apakah buku ditemukan (boolean)
+# durasi : var. input untuk lama peminjaman (int)
+# tanggal_input : var. input untuk tanggal pinjam (str)
+# tanggal_pinjam : var. untuk menyimpan tanggal pinjam (date)
+# tanggal_kembali : var. untuk menyimpan tanggal kembali (date)
+# tanggal_pinjam_list : var. untuk menyimpan tanggal pinjam dalam list (list)
+# tanggal_kembali_list : var. untuk menyimpan tanggal kembali dalam list (list)
+# data_baru : var. untuk menyimpan data peminjaman baru (dict)
+# pinjam : var. index untuk iterasi (int)
+# opsi : var. input untuk pilihan reservasi buku (int)
 def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
     print()
     print("=== PINJAM BUKU ===")
-    id_anggota = input("Masukkan ID Anggota: ")
+    id_anggota = str(input("Masukkan ID Anggota: "))
 
     sudah_pinjam = False
     for pinjam in range(len(data_peminjaman)):
         if data_peminjaman[pinjam]["id_anggota"] == id_anggota:
             sudah_pinjam = True
 
-    if sudah_pinjam:
+    if (sudah_pinjam):
         print("Anda masih memiliki buku yang sedang dipinjam.")
-        pilihan = input("Apakah Anda ingin mengembalikan buku terlebih dahulu? (Ya/Tidak): ")
+        pilihan = str(input("Apakah Anda ingin mengembalikan buku terlebih dahulu? (Ya/Tidak): "))
         if pilihan.lower() == "ya":
             pengembalian_buku(data_buku, data_peminjaman)
         else:
@@ -154,7 +204,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
         return
 
     while True:
-        id_buku = input("Masukkan ID Buku: ")
+        id_buku = str(input("Masukkan ID Buku: "))
         buku_ditemukan = False
 
         for buku in range(len(data_buku)):
@@ -218,6 +268,18 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
             print("ID Buku tidak ditemukan.")
             homepage()
 
+# Fungsi untuk mengembalikan buku
+# id_buku : var. input untuk ID Buku yang ingin dikembalikan (str)
+# id_anggota : var. input untuk ID Anggota (str)
+# index_peminjaman : var. untuk menyimpan index peminjaman yang ditemukan (int)
+# tanggal_kembali : var. untuk menyimpan tanggal kembali (list)
+# tanggal_kembali_obj : var. untuk menyimpan tanggal kembali sebagai 
+# objek date (date)
+# hari_ini : var. input untuk tanggal pengembalian (str)
+# h, b, t : var. untuk menyimpan hari, bulan, tahun dari tanggal 
+# pengembalian (int)
+# tanggal_pengembalian : var. untuk menyimpan tanggal pengembalian sebagai
+# selisih_hari : var. untuk menyimpan selisih hari antara tanggal pengembalian
 def pengembalian_buku(data_buku, data_peminjaman):
     print()
     print("=== PENGEMBALIAN BUKU ===")
@@ -267,12 +329,17 @@ def pengembalian_buku(data_buku, data_peminjaman):
     print("Pengembalian buku berhasil.")
     homepage()
 
+# Fungsi untuk reservasi buku
+# id_anggota : var. input untuk ID Anggota (str)
+# id_buku : var. input untuk ID Buku yang ingin direservasi (str)
+# buku_ditemukan : var. boolean untuk mengecek apakah buku ditemukan (boolean)
+# sudah_reservasi : var. boolean untuk mengecek apakah anggota sudah
 def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
     print("=== RESERVASI BUKU ===")
     if (not id_anggota):
-        id_anggota = input("Masukkan ID Anggota: ")
+        id_anggota = str(input("Masukkan ID Anggota: "))
     if (not id_buku):
-        id_buku = input("Masukkan ID Buku yang ingin direservasi: ")
+        id_buku = str(input("Masukkan ID Buku yang ingin direservasi: "))
         
     buku_ditemukan = False
 
@@ -310,6 +377,9 @@ def reservasi_buku(data_buku, data_reservasi, id_anggota=None, id_buku=None):
     
     homepage()
 
+# Fungsi untuk menampilkan menu tamu
+# pilihan : var. input untuk memilih apakah ingin melihat koleksi 
+# buku atau kembali (int)
 def menu_tamu():
     print("")
     print("=== MENU TAMU ===")
@@ -328,6 +398,8 @@ def menu_tamu():
         menu_tamu()
     homepage()
 
+# Fungsi untuk menampilkan halaman staff perpustakaan
+# pilihan : var. input untuk memilih kegiatan yang akan dilakukan (int)
 def page_staff():
     print("")
     print("Silakan pilih kegiatan yang akan kamu lakukan:")
@@ -355,6 +427,8 @@ def page_staff():
 
     homepage()
 
+# Fungsi untuk melihat daftar buku
+# Ini akan menampilkan daftar buku yang ada di perpustakaan
 def lihat_daftar_buku():
     print("")
     print("Daftar Buku di Perpustakaan:")
@@ -364,23 +438,27 @@ def lihat_daftar_buku():
 
     homepage()
 
+# Fungsi untuk mengecek jumlah stok buku
 def cek_jumlah_stok():
     print("")
     print("Jumlah stok buku:")
-    # for buku in range (len(database["buku"])):
-    #     print(f"{buku['judul_buku']}: {buku['stok']} buah")
     for i in range(len(database["buku"])):
         buku = database["buku"][i]
         print(f"{buku['id_buku']} - {buku['judul_buku']}: {buku['stok']} buah")
     homepage()
 
+# Fungsi untuk mengedit kondisi buku
+# id_buku : var. input untuk ID Buku yang ingin diubah kondisinya (str)
+# buku_ditemukan : var. boolean untuk mengecek apakah buku ditemukan (boolean)
+# lanjut : var. input untuk menanyakan apakah ingin mengubah 
+# kondisi buku lain (str)
 def edit_kondisi_buku():
     while True:
-        id_buku = input("Masukkan ID Buku yang ingin diubah kondisinya: ")
+        id_buku = str(input("Masukkan ID Buku yang ingin diubah kondisinya: "))
         buku_ditemukan = False
         for i in range(len(database["buku"])):
             if (id_buku == database["buku"][i]["id_buku"]):
-                buku = database["buku"][i]  # <- ini penting
+                buku = database["buku"][i] 
                 print(f"Kondisi saat ini: {buku['kondisi_buku']}")
                 kondisi_baru = input("Masukkan kondisi baru: ")
                 buku["kondisi_buku"] = kondisi_baru
@@ -392,15 +470,28 @@ def edit_kondisi_buku():
                 buku_ditemukan = True
                 break
 
-        if not buku_ditemukan:
+        if (not buku_ditemukan):
             print("Buku tidak ditemukan.")
 
-        lanjut = input("Ingin mengubah kondisi buku lain? (y/n): ")
-        if lanjut.lower() != "y":
+        lanjut = str(input("Ingin mengubah kondisi buku lain? (y/n): "))
+        if (lanjut.lower() != "y"):
             break
 
     homepage()
-    
+
+# Fungsi untuk mengedit buku
+# pilihan : var. input untuk memilih apakah ingin menambah buku baru (int)
+# id_buku : var. input untuk ID Buku yang ingin ditambahkan (str)
+# judul : var. input untuk judul buku (str)
+# tipe : var. input untuk tipe buku (str)
+# stok : var. input untuk stok awal buku (int)
+# kondisi : var. input untuk kondisi awal buku (str)
+# jenis : var. input untuk jenis buku (str)
+# status : var. input untuk status buku (str)
+# pengarang : var. input untuk pengarang buku (str)
+# buku_baru : var. untuk menyimpan data buku baru (dict)
+# cari_id : var. input untuk ID Buku yang ingin dihapus (str)
+# temu : var. boolean untuk mengecek apakah ID Buku ditemukan (boolean)
 def edit_buku(data_buku):
     print ("")
     print ("Apa yang ingin kamu lakukan?")
@@ -443,7 +534,7 @@ def edit_buku(data_buku):
         print("Buku baru berhasil ditambahkan ke database.")
 
     elif (pilihan == 2):
-        cari_id = input("Masukkan ID Buku yang ingin dihapus: ")
+        cari_id = str(input("Masukkan ID Buku yang ingin dihapus: "))
         temu = False
         for buku in data_buku:
             if (cari_id == buku["id_buku"]):
@@ -466,37 +557,52 @@ def edit_buku(data_buku):
         edit_buku(database["buku"])
     homepage()
 
+# Fungsi untuk menambahkan tanggal
+# total_hari : var. untuk menghitung total hari dari tahun, 
+# bulan, hari, dan durasi (int)
+# tahun_baru : var. untuk menyimpan tahun baru setelah penambahan (int)
+# sisa_hari : var. untuk menyimpan sisa hari setelah pembagian (int)
+# bulan_baru : var. untuk menyimpan bulan baru setelah penambahan (int)
+# hari_baru : var. untuk menyimpan hari baru setelah penambahan (int)
 def tambah_tanggal(hari, bulan, tahun, durasi):
     total_hari = tahun * 365 + bulan * 30 + hari + durasi
     tahun_baru = total_hari // 365
     sisa_hari = total_hari % 365
     bulan_baru = sisa_hari // 30
     hari_baru = sisa_hari % 30
-    if hari_baru == 0:
+    if (hari_baru == 0):
         hari_baru = 1
     return hari_baru, bulan_baru, tahun_baru
 
+# Fungsi untuk menampilkan tanggal dalam format dd-mm-yyyy
 def tampilkan_tanggal(tgl):
     return f"{tgl[0]:02d}-{tgl[1]:02d}-{tgl[2]}"
 
+# Fungsi untuk mencari peminjaman berdasarkan
 def cari_peminjaman(peminjaman, id_buku, id_anggota):
     for i in range(len(peminjaman)):
-        if peminjaman[i] is not None:
-            if peminjaman[i]["id_buku"] == id_buku and peminjaman[i]["id_anggota"] == id_anggota:
+        if (peminjaman[i] is not None):
+            if (peminjaman[i]["id_buku"] == id_buku ) and (peminjaman[i]["id_anggota"] == id_anggota):
                 return i
     return -1
 
+# Fungsi untuk mengecek apakah ada reservasi lain untuk buku yang sama
 def ada_reservasi_lain(reservasi, id_buku, id_anggota):
     for i in range(len(reservasi)):
-        if reservasi[i]["id_buku"] == id_buku and reservasi[i]["id_anggota"] != id_anggota:
+        if (reservasi[i]["id_buku"] == id_buku) and (reservasi[i]["id_anggota"] != id_anggota):
             return True
     return False
 
+# Fungsi untuk memperpanjang peminjaman buku
+# id_buku : var. input untuk ID Buku yang dipinjam (str)
+# id_anggota : var. input untuk ID Anggota peminjam (str)
+# i : var. untuk menyimpan index peminjaman yang ditemukan (int)
+# durasi : var. input untuk durasi perpanjangan (int)
 def perpanjang_peminjaman(peminjaman, reservasi):
     print("")
     print("=== PERPANJANGAN PEMINJAMAN ===")
-    id_buku = input("ID Buku yang dipinjam  : ")
-    id_anggota = input("ID Anggota peminjam    : ")
+    id_buku = str(input("ID Buku yang dipinjam  : "))
+    id_anggota = str(input("ID Anggota peminjam    : "))
 
     i = cari_peminjaman(peminjaman, id_buku, id_anggota)
     if (i == -1):
@@ -523,6 +629,11 @@ def perpanjang_peminjaman(peminjaman, reservasi):
     
     homepage()
 
+# Fungsi untuk menambahkan bulan pada tanggal
+# tahun : var. untuk menyimpan tahun dari tanggal (int)
+# bulan : var. untuk menyimpan bulan dari tanggal (int)
+# hari : var. untuk menyimpan hari dari tanggal (int)
+# hari_maks : var. untuk menyimpan jumlah hari maksimum pada bulan (int)
 def tambah_bulan(tanggal, durasi_bulan):
     tahun = tanggal.year
     bulan = tanggal.month + durasi_bulan
@@ -538,6 +649,14 @@ def tambah_bulan(tanggal, durasi_bulan):
 
     return datetime(tahun, bulan, hari)
 
+# Fungsi untuk memperpanjang keanggotaan
+# id_anggota : var. input untuk ID Anggota (str)
+# nama : var. input untuk nama Anggota (str)
+# durasi : var. input untuk durasi perpanjangan (int)
+# anggota_ditemukan : var. boolean untuk mengecek apakah 
+# anggota ditemukan (boolean)
+# exp_lama : var. untuk menyimpan tanggal kadaluarsa lama (date)
+# perpanjang_sampai : var. untuk menyimpan tanggal perpanjangan (date)
 def perpanjang_anggota():
     print()
     print("=== PERPANJANGAN KEANGGOTAAN ===")
@@ -547,7 +666,7 @@ def perpanjang_anggota():
 
     anggota_ditemukan = False
 
-    for anggota in database["anggota"]:
+    for anggota in range (database["anggota"]):
         if (id_anggota == anggota["id_anggota"]) and (nama == anggota["nama_anggota"]):
             anggota_ditemukan = True
 
@@ -562,9 +681,10 @@ def perpanjang_anggota():
                 json.dump(database["anggota"], file, indent=4, ensure_ascii=False)
             break
 
-    if not anggota_ditemukan:
+    if (not anggota_ditemukan):
         print("ID atau nama anggota tidak cocok! Perpanjangan gagal.")
 
+# Fungsi utama untuk menjalankan program
 def main():
     homepage()
 if __name__ == '__main__':
