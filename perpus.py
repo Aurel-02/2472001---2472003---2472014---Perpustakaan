@@ -203,7 +203,7 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
         else:
             print("Silakan kembalikan buku terlebih dahulu sebelum meminjam yang baru.")
         page_anggota()
-        return  # keluar agar tidak lanjut ke bagian bawah
+        return  
 
     while True:
         id_buku = str(input("Masukkan ID Buku: "))
@@ -258,7 +258,8 @@ def pinjam_buku(data_buku, data_peminjaman, data_reservasi):
                     if opsi == 1:
                         reservasi_buku(data_buku, data_reservasi, id_anggota, id_buku)
                     elif opsi == 2:
-                        break  
+                        print("Silakan pilih buku lain.")
+                        return pinjam_buku(data_buku, data_peminjaman, data_reservasi)
                     elif opsi == 3:
                         print("Peminjaman dibatalkan.")
                         break 
