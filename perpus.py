@@ -441,8 +441,7 @@ def lihat_daftar_buku():
     for i in range(len(database["buku"])):
         buku = database["buku"][i]
         print(f"{buku['id_buku']} - {buku['judul_buku']} ({buku['stok']})({buku['status']})")
-
-    page_staff()
+    print()
 
 # Fungsi untuk mengecek jumlah stok buku
 def cek_jumlah_stok():
